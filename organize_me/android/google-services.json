@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "110245770073",
+    "firebase_url": "https://organize-me-29887.firebaseio.com",
+    "project_id": "organize-me-29887",
+    "storage_bucket": "organize-me-29887.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:110245770073:android:cdaa7347174a85cbb01248",
+        "android_client_info": {
+          "package_name": "com.example.organize_me"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "110245770073-dg7cfrhiqjo4mj5gor4kf6uv5spesl2u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB0oDNF096oY3bUa1hMIXPxZero3ZHPSRU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "110245770073-dg7cfrhiqjo4mj5gor4kf6uv5spesl2u.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "110245770073-fg7r0gjofmguif1j8mk4fegao8ccdfal.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.organizeMe"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
