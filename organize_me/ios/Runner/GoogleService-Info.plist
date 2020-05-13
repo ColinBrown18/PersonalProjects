@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>110245770073-fg7r0gjofmguif1j8mk4fegao8ccdfal.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.110245770073-fg7r0gjofmguif1j8mk4fegao8ccdfal</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDEzCO1XbjK8DmhhEyz16BqLCe6uJ4pG44</string>
+	<key>GCM_SENDER_ID</key>
+	<string>110245770073</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.organizeMe</string>
+	<key>PROJECT_ID</key>
+	<string>organize-me-29887</string>
+	<key>STORAGE_BUCKET</key>
+	<string>organize-me-29887.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:110245770073:ios:453a48e795a55838b01248</string>
+	<key>DATABASE_URL</key>
+	<string>https://organize-me-29887.firebaseio.com</string>
+</dict>
+</plist>
