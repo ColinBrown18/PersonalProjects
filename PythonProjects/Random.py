@@ -9,6 +9,6 @@ Client = discord.Client()
 
 @Client.event
 async def on_ready():
-    print(f' {client.user} has connected to Discord!')
+    print(f' {Client.user} has connected to Discord!')
 
-    client.run(TOEKN)
+    Client.run(TOEKN)
