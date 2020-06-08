@@ -1,7 +1,7 @@
-package snake;
+package Snake;
 
 import java.awt.Toolkit;
-
+import java.awt.Dimension;
 import javax.swing.JFrame;
 
 public class Snake {
@@ -11,7 +11,7 @@ public class Snake {
     public static Snake snake;
 
     public Snake() {
-        Dimenstion dim = Toolkit.getDefaultToolkit().getScreenSize();
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         jframe = new JFrame("Snake");
         jframe.setVisible(true);
         jframe.setSize(800, 800);
