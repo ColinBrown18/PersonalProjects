@@ -1,5 +1,13 @@
-package Snake;
+package snake;
 public class Snake {
+
+    public JFrame jframe;
+
+    public Snake() {
+        jframe = new JFrame("Snake");
+        jframe.setVisible(true);
+        jframe.setSize(800, 800);
+    }
 
     public static void main(String[] args) {
         
