@@ -11,7 +11,7 @@ public class RenderPanel extends JPanel {
     public static int curColor = 0;
     
     @Override
-    protected void paintedComponent(Graphics g) {
+    protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
         g.setColor(new Color(curColor));

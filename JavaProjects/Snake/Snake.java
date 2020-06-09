@@ -22,7 +22,8 @@ public class Snake implements ActionListener{
         jframe = new JFrame("Snake");
         jframe.setVisible(true);
         jframe.setSize(800, 700);
-        jframe.setLocation(dim.width / 2 - jframe.getWidth() / 2, dim.width / 2 - jframe.getHeight() / 2);
+        jframe.setLocation(dim.width / 2 - jframe.getWidth() / 2, dim.width 
+            / 2 - jframe.getHeight() / 2);
         jframe.add(renderPanel = new RenderPanel());
         jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -35,6 +36,6 @@ public class Snake implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent arg0) {
-        //renderPanel.repaint();
+        renderPanel.repaint();
     }
 }
