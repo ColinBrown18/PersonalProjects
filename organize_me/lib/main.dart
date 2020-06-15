@@ -106,20 +106,26 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 
 // PAGE ONE
-
+//==============================================================================
 class PageOne extends StatefulWidget {
   @override
   _PageOneState createState() => _PageOneState();
 }
 
 class _PageOneState extends State<PageOne> {
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body: Text(
-          "Welcome To My App, this is page one."
+    return Scaffold(
+      // debugShowCheckedModeBanner: false,
+      body: Container(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Row(children: <Widget>[
+              
+            ],)
+          ],
         ),
       ),
     );
@@ -127,7 +133,7 @@ class _PageOneState extends State<PageOne> {
 }
 
 // PAGE TWO
-
+//==============================================================================
 class PageTwo extends StatefulWidget {
   @override
   _PageTwoState createState() => _PageTwoState();
@@ -136,19 +142,22 @@ class PageTwo extends StatefulWidget {
 class _PageTwoState extends State<PageTwo> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body: Text(
-          "Welcome To My App, this is page two."
-        ),
-      ),
+    return Scaffold(
+      //debugShowCheckedModeBanner: false,
+      body: Container(
+        child: Column(
+          children: <Widget>[
+            Text("Welcome To My App, this is page two.",
+            textAlign: TextAlign.center,
+          ),
+        ],)
+      )
     );
   }
 }
 
 // PAGE THREE
-
+//==============================================================================
 class PageThree extends StatefulWidget {
   @override
   _PageThreeState createState() => _PageThreeState();
@@ -157,13 +166,16 @@ class PageThree extends StatefulWidget {
 class _PageThreeState extends State<PageThree> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body: Text(
-          "Welcome To My App, this is page three."
-        ),
+    return Scaffold(
+      //debugShowCheckedModeBanner: false,
+      body: Container(
+        child: Column(
+          children: <Widget>[
+            Text("Welcome To My App, this is page three."
+          ),
+        ],  
       ),
+      )
     );
   }
 }
