@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+// import 'package:googleapis/calenar/v3.dart';
+// import 'package:googleapis_auth/auth_io.dart';
 
 void main() {
   runApp(MyApp());
@@ -122,8 +124,11 @@ class _PageOneState extends State<PageOne> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Row(children: <Widget>[
-              
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text("Welcome To My Application! This is the Welcome Screen, More To Come Later.",
+                textAlign: TextAlign.center,)
             ],)
           ],
         ),
