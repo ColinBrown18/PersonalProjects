@@ -6,7 +6,7 @@ spotify = r'C:\Users\Colin\AppData\Roaming\Spotify\Spotify.exe'
 vscode = r'C:\Users\Colin\AppData\Local\Programs\Microsoft VS Code\Code.exe'
 
 #open chrome and get URL's for websites I may want to open
-chrome = r'C:\Program Files (x86)\Google\Chrome\Application\Chrome.exe %s'
+chrome = r'C:\Program Files (x86)\Google\Chrome\Application\chrome.exe %s'
 TwitchURL = 'https://www.twitch.tv/'
 GitURL = 'https://github.com/ColinBrown18/PersonalProjects'
 
@@ -18,5 +18,7 @@ GitURL = 'https://github.com/ColinBrown18/PersonalProjects'
 #subprocess.Popen(vscode)
 
 #figure out how to open multiple windows
-webbrowser.get(chrome).open(TwitchURL)
-#webbrowser.get(chrome).open(GitURL)
+#subprocess.Popen(chrome) not needed when opening a specific webpage
+webbrowser.open(TwitchURL)
+webbrowser.open(GitURL)
+
