@@ -16,6 +16,11 @@ GitURL = 'https://github.com/ColinBrown18/PersonalProjects'
 
 #add the 'Popen(vscode, filename)' to open the exact file I want
 #subprocess.Popen(vscode)
+def openFile():
+    try: os.startfile(r'C:\Users\Colin\Developer\PersonalProjects\PersonalProjects\Java\Snake\Snake.java')
+
+    except Exception:
+        print ('error')
 
 #figure out how to open multiple windows
 #subprocess.Popen(chrome) not needed when opening a specific webpage
