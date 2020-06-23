@@ -18,18 +18,20 @@ class _DesignCardState extends State<DesignCard> {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: <Widget>[
         Card(
-          margin: EdgeInsets.all(20.0),
+          margin: EdgeInsets.all(10.0),
           color: Colors.white,
           child: Container(
-            padding: EdgeInsets.all(20.0),
+            padding: EdgeInsets.all(50.0),
             child: widget.child,
-            decoration: BoxDecoration(color: Colors.orange,
-            boxShadow: [
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(8.0)),
+              color: Colors.white,
+              boxShadow: [
               BoxShadow(
                 color: widget.boxShadowColor ?? Colors.black38,
-                offset: Offset(10.0, 15.0),
-                blurRadius: 15.0
-              )
+                offset: Offset(0.0, 2.0),
+                blurRadius: 10.0
+              ),
             ])
           ),
         )

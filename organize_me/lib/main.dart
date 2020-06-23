@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 // import 'package:googleapis/calenar/v3.dart';
 // import 'package:googleapis_auth/auth_io.dart';
+import 'Layouts.dart';
 
 void main() {
   runApp(MyApp());
@@ -56,7 +57,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     if (_currentIndex == 0) {
-      TitleText = "Welcome Page";
+      TitleText = "Hello!";
     } else if (_currentIndex == 1) {
       TitleText = "Second Page";
     } else if (_currentIndex == 2) {
@@ -118,20 +119,32 @@ class _PageOneState extends State<PageOne> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      // debugShowCheckedModeBanner: false,
-      body: Container(
-        child: Column(
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Text("Welcome To My Application! This is the Welcome Screen, More To Come Later.",
-                textAlign: TextAlign.center,)
-            ],)
-          ],
-        ),
+            // THIS IS THE TOP WIDGET FOR THE CALENDAR
+            DesignCard(
+              child: Column(
+                children: <Widget>[
+                  Text(
+                    "Calendar"
+                  )
+                ],
+              ),
+            ),
+            DesignCard(
+              child: Column(
+                children: <Widget>[
+                  Text(
+                    "Reminders"
+                  )
+                ],
+              ),
+            )
+        ],),
       ),
     );
   }
@@ -145,18 +158,29 @@ class PageTwo extends StatefulWidget {
 }
 
 class _PageTwoState extends State<PageTwo> {
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      //debugShowCheckedModeBanner: false,
-      body: Container(
-        child: Column(
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text("Welcome To My App, this is page two.",
-            textAlign: TextAlign.center,
-          ),
-        ],)
-      )
+            DesignCard(
+              child: Column(
+                children: <Widget>[
+                  Row(
+                  children: <Widget>[
+                    Text("Welcome To My App, this is page two.",
+                    textAlign: TextAlign.center,)
+                  ],
+                ),
+                ],
+              ),
+            )
+        ],),
+      ),
     );
   }
 }
@@ -169,18 +193,29 @@ class PageThree extends StatefulWidget {
 }
 
 class _PageThreeState extends State<PageThree> {
+  
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      //debugShowCheckedModeBanner: false,
-      body: Container(
-        child: Column(
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text("Welcome To My App, this is page three."
-          ),
-        ],  
+            DesignCard(
+              child: Column(
+                children: <Widget>[
+                  Row(
+                  children: <Widget>[
+                    Text("Welcome To My App, this is page three.",
+                    textAlign: TextAlign.center,)
+                  ],
+                ),
+                ],
+              ),
+            )
+        ],),
       ),
-      )
     );
   }
 }
