@@ -133,28 +133,29 @@ class _PageOneState extends State<PageOne> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
-            // THIS IS THE TOP WIDGET FOR THE CALENDAR
-            DesignCard(
-              child: Column(
-                children: <Widget>[
-                  TableCalendar(
-                    calendarStyle: CalendarStyle(
-                      todayColor: Colors.blue[600],
-                      selectedColor: Colors.blue[900],
-                      
-                    ),
-                    
+    return WillPopScope(
+      child: Container(
+        child: SafeArea(
+          child: Scaffold(
+            body: SingleChildScrollView(
+              child: Container(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                  // THIS IS THE TOP WIDGET FOR THE CALENDAR
+                    DesignCard(
+                      child: Column(
+                        children: <Widget>[
+                          TableCalendar(
+                            calendarStyle: CalendarStyle(
+                            todayColor: Colors.blue[600],
+                            selectedColor: Colors.blue[900],
+                      ),
                     calendarController: _calendarController,
                     )
-                ],
+                  ],
+                ),
               ),
-            ),
             // SECOND WIDGET FOR THE REMINDERS
             DesignCard(
               child: Column(
@@ -175,8 +176,14 @@ class _PageOneState extends State<PageOne> {
                 ],
               ),
             )
-        ],),
+        ],
+                ),
+              ),
+            ),
+          ),
+        ),
       ),
+      onWillPop: () async => true,
     );
   }
 }
