@@ -27,12 +27,13 @@ class _DesignCardState extends State<DesignCard> {
               borderRadius: BorderRadius.all(Radius.circular(8.0)),
               color: Colors.white,
               boxShadow: [
-              BoxShadow(
+                BoxShadow(
                 color: widget.boxShadowColor ?? Colors.black38,
                 offset: Offset(0.0, 2.0),
                 blurRadius: 10.0
-              ),
-            ])
+                ),
+              ]
+            )
           ),
         )
       ]

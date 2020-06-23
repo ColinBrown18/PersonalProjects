@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 // import 'package:googleapis/calenar/v3.dart';
 // import 'package:googleapis_auth/auth_io.dart';
 import 'Layouts.dart';
+import 'package:table_calendar/table_calendar.dart';
 
 void main() {
   runApp(MyApp());
@@ -57,7 +58,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     if (_currentIndex == 0) {
-      TitleText = "Hello!";
+      TitleText = "Today View";
     } else if (_currentIndex == 1) {
       TitleText = "Second Page";
     } else if (_currentIndex == 2) {
@@ -83,11 +84,11 @@ class _MyHomePageState extends State<MyHomePage> {
           },
           items: [
             BottomNavigationBarItem(
-              icon: new Icon(Icons.android),
+              icon: new Icon(Icons.calendar_today),
               title: Text('Welcome')
             ),
             BottomNavigationBarItem(
-              icon: new Icon(Icons.language),
+              icon: new Icon(Icons.dashboard),
               title: Text('Home')
             ),
             BottomNavigationBarItem(
@@ -106,6 +107,7 @@ class _MyHomePageState extends State<MyHomePage> {
       _currentIndex = index;
     });
   }
+
 }
 
 // PAGE ONE
@@ -117,29 +119,58 @@ class PageOne extends StatefulWidget {
 
 class _PageOneState extends State<PageOne> {
 
+  CalendarController _calendarController;
+  @override
+  void initState() {
+    super.initState();
+    _calendarController = CalendarController();
+  }
+  @override
+  void dispose() {
+    _calendarController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             // THIS IS THE TOP WIDGET FOR THE CALENDAR
             DesignCard(
               child: Column(
                 children: <Widget>[
-                  Text(
-                    "Calendar"
-                  )
+                  TableCalendar(
+                    calendarStyle: CalendarStyle(
+                      todayColor: Colors.blue[600],
+                      selectedColor: Colors.blue[900],
+                      
+                    ),
+                    
+                    calendarController: _calendarController,
+                    )
                 ],
               ),
             ),
+            // SECOND WIDGET FOR THE REMINDERS
             DesignCard(
               child: Column(
                 children: <Widget>[
                   Text(
                     "Reminders"
+                  )
+                ],
+              ),
+            ),
+            // THIRD WIDGET FOR THE UPCOMMING PAYMENTS
+            DesignCard(
+              child: Column(
+                children: <Widget>[
+                  Text(
+                    "Payments"
                   )
                 ],
               ),
