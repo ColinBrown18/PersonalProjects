@@ -58,7 +58,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     if (_currentIndex == 0) {
-      TitleText = "Today View";
+      TitleText = "Summary";
     } else if (_currentIndex == 1) {
       TitleText = "Second Page";
     } else if (_currentIndex == 2) {
@@ -85,11 +85,11 @@ class _MyHomePageState extends State<MyHomePage> {
           items: [
             BottomNavigationBarItem(
               icon: new Icon(Icons.calendar_today),
-              title: Text('Welcome')
+              title: Text('Home')
             ),
             BottomNavigationBarItem(
               icon: new Icon(Icons.dashboard),
-              title: Text('Home')
+              title: Text('Customize')
             ),
             BottomNavigationBarItem(
               icon: new Icon(Icons.settings),
@@ -141,8 +141,9 @@ class _PageOneState extends State<PageOne> {
               child: Container(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
-                  // THIS IS THE TOP WIDGET FOR THE CALENDAR
+                    // THIS IS THE TOP WIDGET FOR THE CALENDAR
                     DesignCard(
                       child: Column(
                         children: <Widget>[
@@ -150,33 +151,33 @@ class _PageOneState extends State<PageOne> {
                             calendarStyle: CalendarStyle(
                             todayColor: Colors.blue[600],
                             selectedColor: Colors.blue[900],
+                            ),
+                            calendarController: _calendarController,
+                          )
+                        ],
                       ),
-                    calendarController: _calendarController,
+                    ),
+                    // SECOND WIDGET FOR THE REMINDERS
+                    DesignCard(
+                      child: Column(
+                        children: <Widget>[
+                          Text(
+                            "Reminders"
+                          )
+                        ],
+                      ),
+                    ),
+                    // THIRD WIDGET FOR THE UPCOMMING PAYMENTS
+                    DesignCard(
+                      child: Column(
+                        children: <Widget>[
+                          Text(
+                            "Payments"
+                          )
+                        ],
+                      ),
                     )
                   ],
-                ),
-              ),
-            // SECOND WIDGET FOR THE REMINDERS
-            DesignCard(
-              child: Column(
-                children: <Widget>[
-                  Text(
-                    "Reminders"
-                  )
-                ],
-              ),
-            ),
-            // THIRD WIDGET FOR THE UPCOMMING PAYMENTS
-            DesignCard(
-              child: Column(
-                children: <Widget>[
-                  Text(
-                    "Payments"
-                  )
-                ],
-              ),
-            )
-        ],
                 ),
               ),
             ),
@@ -211,7 +212,8 @@ class _PageTwoState extends State<PageTwo> {
                   Row(
                   children: <Widget>[
                     Text("Welcome To My App, this is page two.",
-                    textAlign: TextAlign.center,)
+                    textAlign: TextAlign.center
+                    )
                   ],
                 ),
                 ],
@@ -240,18 +242,7 @@ class _PageThreeState extends State<PageThree> {
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            DesignCard(
-              child: Column(
-                children: <Widget>[
-                  Row(
-                  children: <Widget>[
-                    Text("Welcome To My App, this is page three.",
-                    textAlign: TextAlign.center,)
-                  ],
-                ),
-                ],
-              ),
-            )
+            
         ],),
       ),
     );
