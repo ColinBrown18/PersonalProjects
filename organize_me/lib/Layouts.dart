@@ -58,13 +58,13 @@ class _SmallDesignCardState extends State<SmallDesignCard> {
   Widget build(BuildContext context) {
     return Column (
       mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.stretch,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Card(
-          margin: EdgeInsets.all(10.0),
+          margin: EdgeInsets.all(5.0),
           color: Colors.white,
           child: Container(
-            padding: EdgeInsets.all(50.0),
+            padding: EdgeInsets.all(10.0),
             child: widget.child,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(8.0)),

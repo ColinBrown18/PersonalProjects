@@ -144,26 +144,81 @@ class _PageOneState extends State<PageOne> {
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
                     // THIS IS THE TOP WIDGET FOR THE CALENDAR
-                    DesignCard(
-                      child: Column(
-                        children: <Widget>[
-                          TableCalendar(
-                            calendarStyle: CalendarStyle(
-                            todayColor: Colors.blue[600],
-                            selectedColor: Colors.blue[900],
-                            ),
-                            calendarController: _calendarController,
-                          )
-                        ],
+                    Container(
+                      child: DesignCard(
+                        child: Column(
+                          children: <Widget>[
+                            TableCalendar(
+                              calendarStyle: CalendarStyle(
+                                todayColor: Colors.blue[600],
+                                selectedColor: Colors.blue[900],
+                              ),
+                              calendarController: _calendarController,
+                            )
+                          ],
+                        ),
                       ),
                     ),
                     // SECOND WIDGET FOR THE REMINDERS
                     DesignCard(
-                      child: Column(
+                      child: Row(
                         children: <Widget>[
-                          Text(
-                            "Reminders"
-                          )
+                          Flexible(
+                            child: Container(
+                              width: 1000,
+                              child: SmallDesignCard(
+                                child: Column(
+                                  children: <Widget>[
+                                    Text(
+                                      "Reminder 1"
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                          Flexible(
+                            child: Container(
+                              width: 1000,
+                              child: SmallDesignCard(
+                                child: Column(
+                                  children: <Widget>[
+                                    Text(
+                                      "Reminder 2"
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                          Flexible(
+                            child: Container(
+                              width: 1000,
+                              child: SmallDesignCard(
+                                child: Column(
+                                  children: <Widget>[
+                                    Text(
+                                      "Reminder 3"
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                          Flexible(
+                            child: Container(
+                              width: 1000,
+                              child: SmallDesignCard(
+                                child: Column(
+                                  children: <Widget>[
+                                    Text(
+                                      "Reminder 4"
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
                         ],
                       ),
                     ),
