@@ -7,4 +7,6 @@ bot = commands.Bot(command_prefix='.')
 async def on_ready():
     print('bot is ready')
 
-bot.run('NzI3OTI5OTY0MjE2NzEzMzA3.Xvy_tQ.le85jQCe6YYDGAotphthKsQujNs')
+# token must be insterted and removed before commiting to gihub
+# if submitted to github, discord will know and change the token
+bot.run('')
