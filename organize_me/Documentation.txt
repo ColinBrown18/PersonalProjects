@@ -1,0 +1,13 @@
+To do:
+
+Sprint One: Create Layout
+
+1. Pages: Home/Customize/Settings
+2. Create Cards and Layouts for each page *each will be subject to change*
+
+Sprint 2: Functionality
+
+
+Calendar:
+	- Make a way for people to add things to the calendar
+	- Make a way for it to sync to Google Calendar *
