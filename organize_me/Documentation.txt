@@ -1,13 +1,48 @@
+Summary of Project:
+
+	This project is to create a application that will help simplify and streamline organization by combining
+calendars and reminders (along with some other functions like recuring payments and bills) so that people can get their life in order.  You can also
+add recuring payments that you may have, and the algorithm will properly give you notifications to let you know when
+a payment is upcoming so you don't get suprised and are able to budget your life better.
+
+
 To do:
 
 Sprint One: Create Layout
 
 1. Pages: Home/Customize/Settings
 2. Create Cards and Layouts for each page *each will be subject to change*
+3. Implement Calendar API and set up layouts for each function
+
+Page 1: Home
+	- This will hold the information that the user will be looking for, should be mostly a static page
+Page 2: Customization Page
+	- This page will be updating and adding to the Home Page.  Add dates, reminders, and payments
 
 Sprint 2: Functionality
 
+Home Page and Cards:
+	Calendar:
+		- Make a way for people to add things to the calendar
+		- Make different types of icons for calendar events
 
-Calendar:
-	- Make a way for people to add things to the calendar
-	- Make a way for it to sync to Google Calendar *
+	Reminders:
+		- Sync with the Calendar to show upcoming events and things to do
+
+	Bills/Payments:
+		- Manually Log different Payments that you have *don't want to sync with any real card because security*
+		- Create the best algorithm to figure out when payments will be due
+		- Send notifications for when a payment is coming up
+
+Customize Page:
+	- Have buttons to create new dates, reminders, and payments
+	- When a new event is created, it should sync it accross all or at least display properly
+	
+Settings:
+	- Have user information and account information
+	-
+
+Sprint 3: User friednly implementations
+	- Allow people to sync their Google Calendar/possible iOS calendar as well
+	- Allow people to customize the Home Page
+	- Some type of log in method (probably firebase)

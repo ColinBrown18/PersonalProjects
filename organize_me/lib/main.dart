@@ -159,6 +159,8 @@ class _PageOneState extends State<PageOne> {
                         ),
                       ),
                     ),
+
+
                     // SECOND WIDGET FOR THE REMINDERS
                     DesignCard(
                       child: Row(
@@ -222,13 +224,13 @@ class _PageOneState extends State<PageOne> {
                         ],
                       ),
                     ),
+
+
                     // THIRD WIDGET FOR THE UPCOMMING PAYMENTS
                     DesignCard(
                       child: Column(
                         children: <Widget>[
-                          Text(
-                            "Payments"
-                          )
+                          
                         ],
                       ),
                     )
