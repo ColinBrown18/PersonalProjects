@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 // import 'package:googleapis_auth/auth_io.dart';
 import 'Layouts.dart';
 import 'package:table_calendar/table_calendar.dart';
+import 'package:expandable/expandable.dart';
 
 void main() {
   runApp(MyApp());
@@ -119,7 +120,7 @@ class PageOne extends StatefulWidget {
 
 class _PageOneState extends State<PageOne> {
 
-  CalendarController _calendarController;
+CalendarController _calendarController;
   @override
   void initState() {
     super.initState();
@@ -132,38 +133,47 @@ class _PageOneState extends State<PageOne> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build (BuildContext context) {
     return WillPopScope(
-      child: Container(
-        child: SafeArea(
-          child: Scaffold(
-            body: SingleChildScrollView(
-              child: Container(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.min,
-                  children: <Widget>[
-                    // THIS IS THE TOP WIDGET FOR THE CALENDAR
-                    Container(
-                      child: DesignCard(
-                        child: Column(
-                          children: <Widget>[
-                            TableCalendar(
-                              calendarStyle: CalendarStyle(
-                                todayColor: Colors.blue[600],
-                                selectedColor: Colors.blue[900],
-                              ),
-                              calendarController: _calendarController,
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
+      child: ExpandableTheme(
+        data:
+          const ExpandableThemeData(
+            iconColor: Colors.blue,
+            useInkWell: true,
+          ),
+        child: ListView(
+          physics: const BouncingScrollPhysics(),
+          children: <Widget>[
+            Calendar(),
+            Reminders(),
+            Bills(),
+          ],
+        ),
+      ),
+    );
+  }
+}
 
 
-                    // SECOND WIDGET FOR THE REMINDERS
-                    DesignCard(
-                      child: Row(
+
+class Calendar extends StatelessWidget {
+  @override
+  Widget build (BuildContext context) {
+    return ExpandableNotifier(
+      child: Padding(
+        padding: const EdgeInsets.all(10),
+        child: DesignCard(
+          child: Column(
+            children: <Widget>[
+              ScrollOnExpand(
+                scrollOnExpand: true,
+                scrollOnCollapse: false,
+                child: ExpandablePanel(
+                  theme: const ExpandableThemeData(
+                    headerAlignment: ExpandablePanelHeaderAlignment.center,
+                    tapBodyToCollapse: true,
+                  ),
+                  collapsed: Row(
                         children: <Widget>[
                           Flexible(
                             child: Container(
@@ -223,28 +233,53 @@ class _PageOneState extends State<PageOne> {
                           ),
                         ],
                       ),
-                    ),
-
-
-                    // THIRD WIDGET FOR THE UPCOMMING PAYMENTS
-                    DesignCard(
-                      child: Column(
-                        children: <Widget>[
-                          
-                        ],
+                  expanded: Text("hello"),
+                  builder: (context, collapsed, expanded) {
+                    return Padding(
+                      padding: EdgeInsets.only(left:10, right: 10, bottom: 10),
+                      child: Expandable(
+                        collapsed: collapsed,
+                        expanded: expanded,
+                        theme: const ExpandableThemeData(crossFadePoint: 0),
                       ),
-                    )
-                  ],
+                    );
+                  }
                 ),
-              ),
-            ),
-          ),
+              )
+            ],
+          ),            
         ),
       ),
-      onWillPop: () async => true,
     );
   }
 }
+
+class Reminders extends StatelessWidget {
+  @override
+  Widget build (BuildContext context) {
+    
+  }
+}
+
+class Bills extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    
+  }
+}
+
+/*
+// Expanded Widget
+class ExtendedReminder extends StatefulWidget {
+  @override
+  _ExtendedReminderState createState() => _ExtendedReminderState();
+}
+
+class _ExtendedReminderState extends State<ExtendedReminder> {
+  @override
+  Widget build(BuildContext context)
+}
+*/
 
 // PAGE TWO
 //==============================================================================

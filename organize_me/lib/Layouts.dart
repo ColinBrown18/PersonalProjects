@@ -19,6 +19,7 @@ class _DesignCardState extends State<DesignCard> {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: <Widget>[
         Card(
+          //clipBehavior: Clip.antiAlias,
           margin: EdgeInsets.all(10.0),
           color: Colors.white,
           child: Container(
