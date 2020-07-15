@@ -142,9 +142,22 @@ CalendarController _calendarController;
             useInkWell: true,
           ),
         child: ListView(
-          physics: const BouncingScrollPhysics(),
           children: <Widget>[
-            Calendar(),
+            // CALENDAR CODE GOES HERE
+            DesignCard(
+              child: Column(
+                children: <Widget>[
+                  TableCalendar(
+                    calendarStyle: CalendarStyle(
+                      todayColor: Colors.blue[600],
+                      selectedColor: Colors.blue[900],
+                    ),
+                    calendarController: _calendarController,
+                  )
+                ],
+              ),   
+            ),
+            // END OF CALENDAR CODE
             Reminders(),
             Bills(),
           ],
@@ -154,110 +167,120 @@ CalendarController _calendarController;
   }
 }
 
-
-
-class Calendar extends StatelessWidget {
-  @override
-  Widget build (BuildContext context) {
-    return ExpandableNotifier(
-      child: Padding(
-        padding: const EdgeInsets.all(10),
-        child: DesignCard(
-          child: Column(
-            children: <Widget>[
-              ScrollOnExpand(
-                scrollOnExpand: true,
-                scrollOnCollapse: false,
-                child: ExpandablePanel(
-                  theme: const ExpandableThemeData(
-                    headerAlignment: ExpandablePanelHeaderAlignment.center,
-                    tapBodyToCollapse: true,
-                  ),
-                  collapsed: Row(
-                        children: <Widget>[
-                          Flexible(
-                            child: Container(
-                              width: 1000,
-                              child: SmallDesignCard(
-                                child: Column(
-                                  children: <Widget>[
-                                    Text(
-                                      "Reminder 1"
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                          Flexible(
-                            child: Container(
-                              width: 1000,
-                              child: SmallDesignCard(
-                                child: Column(
-                                  children: <Widget>[
-                                    Text(
-                                      "Reminder 2"
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                          Flexible(
-                            child: Container(
-                              width: 1000,
-                              child: SmallDesignCard(
-                                child: Column(
-                                  children: <Widget>[
-                                    Text(
-                                      "Reminder 3"
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                          Flexible(
-                            child: Container(
-                              width: 1000,
-                              child: SmallDesignCard(
-                                child: Column(
-                                  children: <Widget>[
-                                    Text(
-                                      "Reminder 4"
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                  expanded: Text("hello"),
-                  builder: (context, collapsed, expanded) {
-                    return Padding(
-                      padding: EdgeInsets.only(left:10, right: 10, bottom: 10),
-                      child: Expandable(
-                        collapsed: collapsed,
-                        expanded: expanded,
-                        theme: const ExpandableThemeData(crossFadePoint: 0),
-                      ),
-                    );
-                  }
-                ),
-              )
-            ],
-          ),            
-        ),
-      ),
-    );
-  }
-}
-
 class Reminders extends StatelessWidget {
   @override
   Widget build (BuildContext context) {
+    buildCollapsed() {
+      return DesignCard(
+        child: Row(
+          children: <Widget>[
+            Flexible(
+              child: Container(
+                width: 1000,
+                child: SmallDesignCard(
+                  child: Column(
+                    children: <Widget>[
+                      Text(
+                        "Reminder 1"
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            Flexible(
+              child: Container(
+                width: 1000,
+                child: SmallDesignCard(
+                  child: Column(
+                    children: <Widget>[
+                      Text(
+                        "Reminder 2"
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            Flexible(
+              child: Container(
+                width: 1000,
+                child: SmallDesignCard(
+                  child: Column(
+                    children: <Widget>[
+                      Text(
+                        "Reminder 3"
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            Flexible(
+              child: Container(
+                width: 1000,
+                child: SmallDesignCard(
+                  child: Column(
+                    children: <Widget>[
+                      Text(
+                        "Reminder 4"
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      );
+    }
     
+    buildExpanded() {
+      return Column(
+        children: <Widget>[
+          Text("Hello")
+        ],
+      );
+    }
+    return ExpandableNotifier(
+      child: Padding(
+        padding: const EdgeInsets.only(left: 10, right: 10, bottom: 10),
+        child: ScrollOnExpand(
+          child: DesignCard(
+            child: Column(
+              children: <Widget>[
+                Expandable(
+                  collapsed: buildCollapsed(),
+                  expanded: buildExpanded(),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: <Widget>[
+                    Builder(
+                      builder: (context) {
+                        var controller = ExpandableController.of(context);
+                        return FlatButton(
+                          child: Text(
+                            controller.expanded ? "More" : "Expand",
+                            style: Theme.of(context)
+                                    .textTheme
+                                    .button
+                                    .copyWith(color: Colors.deepOrange),
+                          ),
+                          onPressed: () {
+                            controller.toggle();
+                          },
+                        );
+                      },
+                    )
+                  ],
+                )
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }
 
