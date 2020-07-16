@@ -46,3 +46,168 @@ Sprint 3: User friednly implementations
 	- Allow people to sync their Google Calendar/possible iOS calendar as well
 	- Allow people to customize the Home Page
 	- Some type of log in method (probably firebase)
+
+
+Temp Code:
+
+ Widget build(BuildContext context) {
+    return WillPopScope(
+      child: Container(
+        child: SafeArea(
+          child: Scaffold(
+            body: SingleChildScrollView(
+              child: Container(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    // THIS IS THE TOP WIDGET FOR THE CALENDAR
+                    Container(
+                      child: DesignCard(
+                        child: Column(
+                          children: <Widget>[
+                            TableCalendar(
+                              calendarStyle: CalendarStyle(
+                                todayColor: Colors.blue[600],
+                                selectedColor: Colors.blue[900],
+                              ),
+                              calendarController: _calendarController,
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+
+
+                    // SECOND WIDGET FOR THE REMINDERS
+                    DesignCard(
+                      child: Row(
+                        children: <Widget>[
+                          Flexible(
+                            child: Container(
+                              width: 1000,
+                              child: SmallDesignCard(
+                                child: Column(
+                                  children: <Widget>[
+                                    Text(
+                                      "Reminder 1"
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                          Flexible(
+                            child: Container(
+                              width: 1000,
+                              child: SmallDesignCard(
+                                child: Column(
+                                  children: <Widget>[
+                                    Text(
+                                      "Reminder 2"
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                          Flexible(
+                            child: Container(
+                              width: 1000,
+                              child: SmallDesignCard(
+                                child: Column(
+                                  children: <Widget>[
+                                    Text(
+                                      "Reminder 3"
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                          Flexible(
+                            child: Container(
+                              width: 1000,
+                              child: SmallDesignCard(
+                                child: Column(
+                                  children: <Widget>[
+                                    Text(
+                                      "Reminder 4"
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+
+
+                    // THIRD WIDGET FOR THE UPCOMMING PAYMENTS
+                    DesignCard(
+                      child: Column(
+                        children: <Widget>[
+                          
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
+      onWillPop: () async => true,
+    );
+  }
+
+
+
+@override
+  Widget build (BuildContext context) {
+    return WillPopScope(
+      child: ExpandableTheme(
+        data:
+          const ExpandableThemeData(
+            iconColor: Colors.blue,
+            useInkWell: true,
+          ),
+        child: ListView(
+          physics: const BouncingScrollPhysics(),
+          children: <Widget>[
+            Calendar(),
+            Reminders(),
+            Bills(),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class Calendar extends StatelessWidget {
+  @override
+  Widget build (BuildContext context) {
+    return ExpandableNotifier(
+      child: Padding(
+        
+      ),
+    )
+  }
+}
+
+class Reminders extends StatelessWidget {
+  @override
+  Widget build (BuildContext context) {
+
+  }
+}
+
+class Bills extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    
+  }
+}

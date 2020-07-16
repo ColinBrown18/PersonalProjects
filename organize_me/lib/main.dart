@@ -144,6 +144,7 @@ CalendarController _calendarController;
         child: ListView(
           children: <Widget>[
             // CALENDAR CODE GOES HERE
+            
             DesignCard(
               child: Column(
                 children: <Widget>[
@@ -167,84 +168,181 @@ CalendarController _calendarController;
   }
 }
 
+
 class Reminders extends StatelessWidget {
   @override
   Widget build (BuildContext context) {
+
+    // Reminders Collapsed State
     buildCollapsed() {
-      return DesignCard(
-        child: Row(
-          children: <Widget>[
-            Flexible(
-              child: Container(
-                width: 1000,
-                child: SmallDesignCard(
-                  child: Column(
-                    children: <Widget>[
-                      Text(
-                        "Reminder 1"
-                      )
-                    ],
+      return Container (
+        child: Padding(
+          padding: EdgeInsets.all(1),
+          child: Row(
+            children: <Widget>[
+              Flexible(
+                child: Container(
+                  width: 1000,
+                  child: SmallDesignCard(
+                    child: Column(
+                      children: <Widget>[
+                        Text(
+                          "Reminder 1"
+                        )
+                      ],
+                    ),
                   ),
                 ),
               ),
-            ),
-            Flexible(
-              child: Container(
-                width: 1000,
-                child: SmallDesignCard(
-                  child: Column(
-                    children: <Widget>[
-                      Text(
-                        "Reminder 2"
-                      )
-                    ],
+              Flexible(
+                child: Container(
+                  width: 1000,
+                  child: SmallDesignCard(
+                    child: Column(
+                      children: <Widget>[
+                        Text(
+                          "Reminder 2"
+                        )
+                      ],
+                    ),
                   ),
                 ),
               ),
-            ),
-            Flexible(
-              child: Container(
-                width: 1000,
-                child: SmallDesignCard(
-                  child: Column(
-                    children: <Widget>[
-                      Text(
-                        "Reminder 3"
-                      )
-                    ],
+              Flexible(
+                child: Container(
+                  width: 1000,
+                  child: SmallDesignCard(
+                    child: Column(
+                      children: <Widget>[
+                        Text(
+                          "Reminder 3"
+                        )
+                      ],
+                    ),
                   ),
                 ),
               ),
-            ),
-            Flexible(
-              child: Container(
-                width: 1000,
-                child: SmallDesignCard(
-                  child: Column(
-                    children: <Widget>[
-                      Text(
-                        "Reminder 4"
-                      )
-                    ],
+              Flexible(
+                child: Container(
+                  width: 1000,
+                  child: SmallDesignCard(
+                    child: Column(
+                      children: <Widget>[
+                        Text(
+                          "Reminder 4"
+                        )
+                      ],
+                    ),
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       );
     }
     
+    // Reminder Expanded State
     buildExpanded() {
-      return Column(
-        children: <Widget>[
-          Text("Hello")
-        ],
+      return Container(
+        child: Padding(
+          padding: EdgeInsets.all(1),
+          child: Column(
+            children: <Widget>[
+              MedDesignCard(
+                child: Row(
+                  children: <Widget>[
+                    Flexible(
+                      flex: 2,
+                      fit: FlexFit.tight,
+                      child: Text("Title"),
+                    ),
+                    Flexible(
+                      flex: 2,
+                      fit: FlexFit.tight,
+                      child: Text("Summary"),
+                    ),
+                    Flexible(
+                      flex: 2,
+                      fit: FlexFit.tight,
+                      child: Text("Date"),
+                    )
+                  ],
+                ),
+              ),
+              MedDesignCard(
+                child: Row(
+                  children: <Widget>[
+                    Flexible(
+                      flex: 2,
+                      fit: FlexFit.tight,
+                      child: Text("Title"),
+                    ),
+                    Flexible(
+                      flex: 2,
+                      fit: FlexFit.tight,
+                      child: Text("Summary"),
+                    ),
+                    Flexible(
+                      flex: 2,
+                      fit: FlexFit.tight,
+                      child: Text("Date"),
+                    )
+                  ],
+                ),
+              ),
+              MedDesignCard(
+                child: Row(
+                  children: <Widget>[
+                    Flexible(
+                      flex: 2,
+                      fit: FlexFit.tight,
+                      child: Text("Title"),
+                    ),
+                    Flexible(
+                      flex: 2,
+                      fit: FlexFit.tight,
+                      child: Text("Summary"),
+                    ),
+                    Flexible(
+                      flex: 2,
+                      fit: FlexFit.tight,
+                      child: Text("Date"),
+                    )
+                  ],
+                ),
+              ),
+              MedDesignCard(
+                child: Row(
+                  children: <Widget>[
+                    Flexible(
+                      flex: 2,
+                      fit: FlexFit.tight,
+                      child: Text("Title"),
+                    ),
+                    Flexible(
+                      flex: 2,
+                      fit: FlexFit.tight,
+                      child: Text("Summary"),
+                    ),
+                    Flexible(
+                      flex: 2,
+                      fit: FlexFit.tight,
+                      child: Text("Date"),
+                    )
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
       );
     }
+
+    // Button to Toggle Collapsed/Expanded
     return ExpandableNotifier(
       child: Padding(
-        padding: const EdgeInsets.only(left: 10, right: 10, bottom: 10),
+        padding: const EdgeInsets.all(0),
         child: ScrollOnExpand(
           child: DesignCard(
             child: Column(
@@ -261,7 +359,7 @@ class Reminders extends StatelessWidget {
                         var controller = ExpandableController.of(context);
                         return FlatButton(
                           child: Text(
-                            controller.expanded ? "More" : "Expand",
+                            controller.expanded ? "Collapse" : "Expand",
                             style: Theme.of(context)
                                     .textTheme
                                     .button
@@ -288,21 +386,122 @@ class Bills extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     
+    // Bills Collapsed State
+    buildCollapsed() {
+      return Container (
+        child: Padding(
+          padding: EdgeInsets.all(1),
+          child: Row(
+            children: <Widget>[
+              Flexible(
+                child: Container(
+                  width: 1000,
+                  child: SmallDesignCard(
+                    child: Column(
+                      children: <Widget>[
+                        Text(
+                          "Payment 1"
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Flexible(
+                child: Container(
+                  width: 1000,
+                  child: SmallDesignCard(
+                    child: Column(
+                      children: <Widget>[
+                        Text(
+                          "Payment 2"
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Flexible(
+                child: Container(
+                  width: 1000,
+                  child: SmallDesignCard(
+                    child: Column(
+                      children: <Widget>[
+                        Text(
+                          "Payment 3"
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Flexible(
+                child: Container(
+                  width: 1000,
+                  child: SmallDesignCard(
+                    child: Column(
+                      children: <Widget>[
+                        Text(
+                          "Payment 4"
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
+    }
+
+    // Bills Expanded State
+    buildExpanded() {
+      
+    }
+
+    // Button to Toggle Collapsed/Expanded
+    return ExpandableNotifier(
+      child: Padding(
+        padding: const EdgeInsets.all(0),
+        child: ScrollOnExpand(
+          child: DesignCard(
+            child: Column(
+              children: <Widget>[
+                Expandable(
+                  collapsed: buildCollapsed(),
+                  expanded: buildExpanded(),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: <Widget>[
+                    Builder(
+                      builder: (context) {
+                        var controller = ExpandableController.of(context);
+                        return FlatButton(
+                          child: Text(
+                            controller.expanded ? "Collapse" : "Expand",
+                            style: Theme.of(context)
+                                    .textTheme
+                                    .button
+                                    .copyWith(color: Colors.deepOrange),
+                          ),
+                          onPressed: () {
+                            controller.toggle();
+                          },
+                        );
+                      },
+                    )
+                  ],
+                )
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }
-
-/*
-// Expanded Widget
-class ExtendedReminder extends StatefulWidget {
-  @override
-  _ExtendedReminderState createState() => _ExtendedReminderState();
-}
-
-class _ExtendedReminderState extends State<ExtendedReminder> {
-  @override
-  Widget build(BuildContext context)
-}
-*/
 
 // PAGE TWO
 //==============================================================================
