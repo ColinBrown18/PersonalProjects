@@ -14,10 +14,16 @@ Sprint One: Create Layout
 2. Create Cards and Layouts for each page *each will be subject to change*
 3. Implement Calendar API and set up layouts for each function
 
-Page 1: Home
+Page 1: Home (DONE)
 	- This will hold the information that the user will be looking for, should be mostly a static page
-Page 2: Customization Page
+Page 2: Customization Page (CURRENTLY WORKING ON)
 	- This page will be updating and adding to the Home Page.  Add dates, reminders, and payments
+Page 3: Settings Page
+	- Show the user their information
+	- Log out Button
+Login Page:
+	- Ask user to enter their information
+	- Allow people to create a new account
 
 Sprint 2: Functionality
 
