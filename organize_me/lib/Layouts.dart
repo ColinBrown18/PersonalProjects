@@ -15,31 +15,28 @@ class _DesignCardState extends State<DesignCard> {
   @override
   Widget build(BuildContext context) {
     return Column(
-      mainAxisSize: MainAxisSize.max,
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: <Widget>[
-        Card(
-          //clipBehavior: Clip.antiAlias,
-          margin: EdgeInsets.all(10.0), // Space above entire
-          color: Colors.white,
-          child: Container(
-            padding: EdgeInsets.all(10.0), // Space of border between widgets inside from the border
-            child: widget.child,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(8.0)),
-              color: Colors.white,
-              boxShadow: [
-                BoxShadow(
-                color: widget.boxShadowColor ?? Colors.black38,
-                offset: Offset(0.0, 2.0),
-                blurRadius: 10.0
-                ),
-              ]
-            )
-          ),
-        )
-      ]
-    );
+        mainAxisSize: MainAxisSize.max,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: <Widget>[
+          Card(
+            //clipBehavior: Clip.antiAlias,
+            margin: EdgeInsets.all(10.0), // Space above entire
+            color: Colors.white,
+            child: Container(
+                padding: EdgeInsets.all(
+                    10.0), // Space of border between widgets inside from the border
+                child: widget.child,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                          color: widget.boxShadowColor ?? Colors.black38,
+                          offset: Offset(0.0, 2.0),
+                          blurRadius: 10.0),
+                    ])),
+          )
+        ]);
   }
 }
 
@@ -57,7 +54,7 @@ class SmallDesignCard extends StatefulWidget {
 class _SmallDesignCardState extends State<SmallDesignCard> {
   @override
   Widget build(BuildContext context) {
-    return Column (
+    return Column(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
@@ -68,16 +65,14 @@ class _SmallDesignCardState extends State<SmallDesignCard> {
             padding: EdgeInsets.all(6.0),
             child: widget.child,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(8.0)),
-              color: Colors.white,
-              boxShadow: [
-                BoxShadow(
-                  color: widget.boxShadowColor ?? Colors.black38,
-                  offset: Offset(0.0, 3.0),
-                  blurRadius: 5.0
-                ),
-              ]
-            ),
+                borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                color: Colors.white,
+                boxShadow: [
+                  BoxShadow(
+                      color: widget.boxShadowColor ?? Colors.black38,
+                      offset: Offset(0.0, 3.0),
+                      blurRadius: 5.0),
+                ]),
           ),
         )
       ],
@@ -99,7 +94,7 @@ class MedDesignCard extends StatefulWidget {
 class _MedDesignCardState extends State<MedDesignCard> {
   @override
   Widget build(BuildContext context) {
-    return Column (
+    return Column(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
@@ -110,16 +105,14 @@ class _MedDesignCardState extends State<MedDesignCard> {
             padding: EdgeInsets.all(6.0),
             child: widget.child,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(8.0)),
-              color: Colors.white,
-              boxShadow: [
-                BoxShadow(
-                  color: widget.boxShadowColor ?? Colors.black38,
-                  offset: Offset(0.0, 3.0),
-                  blurRadius: 5.0
-                ),
-              ]
-            ),
+                borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                color: Colors.white,
+                boxShadow: [
+                  BoxShadow(
+                      color: widget.boxShadowColor ?? Colors.black38,
+                      offset: Offset(0.0, 3.0),
+                      blurRadius: 5.0),
+                ]),
           ),
         )
       ],

@@ -217,3 +217,98 @@ class Bills extends StatelessWidget {
     
   }
 }
+
+Widget build(BuildContext context) {
+    return Scaffold(
+      body: ReorderableList(
+        onReorder: this._reorderCallback,
+        onReorderDone: this._reorderDone,
+        // decoratePlaceholder: (Widget item, double opacity) {
+        // return DecoratedPlaceholder(widget: item, offset: 0);
+        // },
+        child: Column(
+          children: <Widget>[
+            Row(
+              children: <Widget>[],
+            ),
+            Row(
+              children: <Widget>[
+                CustomScrollView(
+                  // cacheExtent: 3000,
+                  slivers: <Widget>[
+                    SliverPadding(
+                        padding: EdgeInsets.only(
+                            bottom: MediaQuery.of(context).padding.bottom),
+                        sliver: SliverList(
+                          delegate: SliverChildBuilderDelegate(
+                              (BuildContext context, int index) {
+                            return Item(
+                              data: _items[index],
+                              // first and last attributes affect border drawn during dragging
+                              isFirst: index == 0,
+                              isLast: index == _items.length - 1,
+                              draggingMode: _draggingMode,
+                            );
+                          }),
+                        )),
+                  ],
+                ),
+              ],
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+
+@override
+Widget build(BuildContext context) {
+  return MaterialApp(
+    debugShowCheckedModeBanner: false,
+    home: Scaffold(
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          DesignCard(
+            child: Column(
+              children: <Widget>[
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: <Widget>[
+                    Flexible(
+                        child: Text("Add Event",
+                            style: TextStyle(fontSize: 38),
+                            textAlign: TextAlign.center)),
+                    Flexible(
+                      child: IconButton(
+                        icon: new Icon(Icons.add_box),
+                        iconSize: 50,
+                      ),
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: <Widget>[
+                    Flexible(
+                        child: Text("Add Bill",
+                            style: TextStyle(fontSize: 38),
+                            textAlign: TextAlign.center)),
+                    Flexible(
+                      child: IconButton(
+                        icon: new Icon(Icons.add_box),
+                        iconSize: 50,
+                      ),
+                    ),
+                  ],
+                )
+              ],
+            ),
+          ),
+        ],
+      ),
+    ),
+  );
+}

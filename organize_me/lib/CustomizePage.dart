@@ -11,10 +11,27 @@ class CustomizePage extends StatefulWidget {
 }
 
 class _CustomizePageState extends State<CustomizePage> {
+  
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      
+    );
+  }
+}
+
+class ChangeHome extends StatefulWidget {
+  @override
+  _ChangeHomeState createState() => _ChangeHomeState();
+}
+
+class _ChangeHomeState extends State<ChangeHome> {
+  // Reorderable List Code
   List<ItemData> _items;
   _CustomizePageState() {
     _items = List();
-    for (int i = 0; i < 3; i++) {
+    for (int i = 0; i < 10; i++) {
       String label = "List item $i";
       if (i == 5) {
         label += ". This item has a long label and will be wrapped.";
@@ -59,68 +76,41 @@ class _CustomizePageState extends State<CustomizePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: ReorderableList(
-        onReorder: this._reorderCallback,
-        onReorderDone: this._reorderDone,
-        // decoratePlaceholder: (Widget item, double opacity) {
-        // return DecoratedPlaceholder(widget: item, offset: 0);
-        // },
-        child: CustomScrollView(
-          // cacheExtent: 3000,
-          slivers: <Widget>[
-            SliverAppBar(
-              actions: <Widget>[
-                PopupMenuButton<DraggingMode>(
-                  child: Container(
-                    alignment: Alignment.center,
-                    padding: const EdgeInsets.symmetric(horizontal: 30),
-                    child: Text("Options"),
-                  ),
-                  initialValue: _draggingMode,
-                  onSelected: (DraggingMode mode) {
-                    setState(() {
-                      _draggingMode = mode;
-                    });
-                  },
-                  itemBuilder: (BuildContext context) =>
-                      <PopupMenuItem<DraggingMode>>[
-                    const PopupMenuItem<DraggingMode>(
-                        value: DraggingMode.iOS,
-                        child: Text('iOS-like dragging')),
-                    const PopupMenuItem<DraggingMode>(
-                        value: DraggingMode.Android,
-                        child: Text('Android-like dragging'))
-                  ],
-                )
-              ],
-              pinned: true,
-              expandedHeight: 150.0,
-              flexibleSpace: const FlexibleSpaceBar(
-                title: const Text('Demo'),
-              ),
-            ),
-            SliverPadding(
-                padding: EdgeInsets.only(
-                    bottom: MediaQuery.of(context).padding.bottom),
-                sliver: SliverList(
-                  delegate: SliverChildBuilderDelegate(
-                      (BuildContext context, int index) {
-                    return Item(
-                      data: _items[index],
-                      // first and last attributes affect border drawn during dragging
-                      isFirst: index == 0,
-                      isLast: index == _items.length - 1,
-                      draggingMode: _draggingMode,
-                    );
-                  }),
-                )),
-          ],
+          onReorder: this._reorderCallback,
+          onReorderDone: this._reorderDone,
+          // decoratePlaceholder: (Widget item, double opacity) {
+          // return DecoratedPlaceholder(widget: item, offset: 0);
+          // },
+          child: Column(
+            children: <Widget>[
+              CustomScrollView(
+                // cacheExtent: 3000,
+                slivers: <Widget>[
+                  SliverPadding(
+                    padding: EdgeInsets.only(
+                        bottom: MediaQuery.of(context).padding.bottom),
+                    sliver: SliverList(
+                      delegate: SliverChildBuilderDelegate(
+                          (BuildContext context, int index) {
+                        return Item(
+                          data: _items[index],
+                          // first and last attributes affect border drawn during dragging
+                          isFirst: index == 0,
+                          isLast: index == _items.length - 1,
+                          draggingMode: _draggingMode,
+                        );
+                      }),
+                    ),
+                  )
+                ],
+              )
+            ],
+          ),
         ),
-      ),
     );
   }
-}
 
-class Item extends StatelessWidget {
+  class Item extends StatelessWidget {
   Item({
     this.data,
     this.isFirst,
@@ -155,7 +145,7 @@ class Item extends StatelessWidget {
 
     // For iOS dragging mode, there will be drag handle on the rigth that triggers
     // reordering; For android mode it will be just an empty container
-    Widget dragHandle = draggingMode == draggingMode.iOS
+    Widget dragHandle = draggingMode == DraggingMode.iOS
         ? ReorderableListener(
             child: Container(
               padding: EdgeInsets.only(right: 18.0, left: 18.0),
@@ -166,8 +156,51 @@ class Item extends StatelessWidget {
             ),
           )
         : Container();
+
+    Widget content = Container(
+      decoration: decoration,
+      child: SafeArea(
+        top: false,
+        bottom: false,
+        child: Opacity(
+          // hide content for placeholder
+          opacity: state == ReorderableItemState.placeholder ? 0.0 : 1.0,
+          child: IntrinsicHeight(
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                Expanded(
+                    child: Padding(
+                  padding:
+                      EdgeInsets.symmetric(vertical: 14.0, horizontal: 14.0),
+                  child: Text(data.title,
+                      style: Theme.of(context).textTheme.subtitle1),
+                )),
+                // Triggers the reordering
+                dragHandle,
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+
+    if (draggingMode == DraggingMode.Android) {
+      content = DelayedReorderableListener(
+        child: content,
+      );
+    }
+    return content;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return ReorderableItem(key: data.key, childBuilder: _buildChild);
   }
 }
+}
+
+
 
 /*  OLD LAYOUT CODE THAT WAS STATIC
   @override
@@ -211,68 +244,6 @@ class Item extends StatelessWidget {
                       ),
                     ],
                   )
-                ],
-              ),
-            ),
-            DesignCard(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: <Widget>[
-                  Row(
-                    children: <Widget>[
-                      Flexible(
-                        child: Text(
-                          "Edit Home Page",
-                          style: TextStyle(
-                              decoration: TextDecoration.underline,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 32),
-                        ),
-                      )
-                    ],
-                  ),
-                  Row(
-                    children: <Widget>[Text("")], // For Spacing Purposes
-                  ),
-                  Row(
-                    children: <Widget>[
-                      Flexible(
-                        child: Icon(Icons.dehaze),
-                      ),
-                      Flexible(
-                        child: Text(
-                          "   Calendar",
-                          style: TextStyle(fontSize: 32),
-                        ),
-                      )
-                    ],
-                  ),
-                  Row(
-                    children: <Widget>[
-                      Flexible(
-                        child: Icon(Icons.dehaze),
-                      ),
-                      Flexible(
-                        child: Text(
-                          "   Reminder",
-                          style: TextStyle(fontSize: 32),
-                        ),
-                      )
-                    ],
-                  ),
-                  Row(
-                    children: <Widget>[
-                      Flexible(
-                        child: Icon(Icons.dehaze),
-                      ),
-                      Flexible(
-                        child: Text(
-                          "   Payments",
-                          style: TextStyle(fontSize: 32),
-                        ),
-                      )
-                    ],
-                  ),
                 ],
               ),
             ),

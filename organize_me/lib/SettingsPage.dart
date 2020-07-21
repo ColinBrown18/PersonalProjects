@@ -12,7 +12,6 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPageState extends State<SettingsPage> {
-  
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -20,9 +19,8 @@ class _SettingsPageState extends State<SettingsPage> {
       home: Scaffold(
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            
-        ],),
+          children: <Widget>[],
+        ),
       ),
     );
   }
