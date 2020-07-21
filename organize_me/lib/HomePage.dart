@@ -12,13 +12,13 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
-CalendarController _calendarController;
+  CalendarController _calendarController;
   @override
   void initState() {
     super.initState();
     _calendarController = CalendarController();
   }
+
   @override
   void dispose() {
     _calendarController.dispose();
@@ -26,27 +26,28 @@ CalendarController _calendarController;
   }
 
   @override
-  Widget build (BuildContext context) {
+  Widget build(BuildContext context) {
     return WillPopScope(
       child: ExpandableTheme(
-        data:
-          const ExpandableThemeData(
-            iconColor: Colors.blue,
-            useInkWell: true,
-          ),
+        data: const ExpandableThemeData(
+          iconColor: Colors.blue,
+          useInkWell: true,
+        ),
         child: ListView(
           children: <Widget>[
             // CALENDAR CODE GOES HERE
-            
+
             DesignCard(
               child: Column(
                 children: <Widget>[
                   Row(
                     children: <Widget>[
-                      Text("Calendar",
-                        style: TextStyle(fontSize: 30, 
-                        fontWeight: FontWeight.bold, 
-                        fontFamily: "Ariel"), 
+                      Text(
+                        "Calendar",
+                        style: TextStyle(
+                            fontSize: 30,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: "Ariel"),
                         textAlign: TextAlign.start,
                       )
                     ],
@@ -60,7 +61,7 @@ CalendarController _calendarController;
                     calendarController: _calendarController,
                   )
                 ],
-              ),   
+              ),
             ),
             // END OF CALENDAR CODE
             Reminders(),
@@ -79,11 +80,10 @@ class Reminders extends StatefulWidget {
 
 class _RemindersState extends State<Reminders> {
   @override
-  Widget build (BuildContext context) {
-
+  Widget build(BuildContext context) {
     // Reminders Collapsed State
     buildCollapsed() {
-      return Container (
+      return Container(
         child: Padding(
           padding: EdgeInsets.all(1),
           child: Column(
@@ -92,10 +92,12 @@ class _RemindersState extends State<Reminders> {
                 padding: const EdgeInsets.only(bottom: 10.0),
                 child: Row(
                   children: <Widget>[
-                    Text("Reminders",
-                      style: TextStyle(fontSize: 30, 
-                      fontWeight: FontWeight.bold, 
-                      fontFamily: "Ariel"), 
+                    Text(
+                      "Reminders",
+                      style: TextStyle(
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: "Ariel"),
                       textAlign: TextAlign.start,
                     ),
                   ],
@@ -108,11 +110,7 @@ class _RemindersState extends State<Reminders> {
                       width: 1000,
                       child: SmallDesignCard(
                         child: Column(
-                          children: <Widget>[
-                            Text(
-                              "Reminder 1"
-                            )
-                          ],
+                          children: <Widget>[Text("Reminder 1")],
                         ),
                       ),
                     ),
@@ -122,11 +120,7 @@ class _RemindersState extends State<Reminders> {
                       width: 1000,
                       child: SmallDesignCard(
                         child: Column(
-                          children: <Widget>[
-                            Text(
-                              "Reminder 2"
-                            )
-                          ],
+                          children: <Widget>[Text("Reminder 2")],
                         ),
                       ),
                     ),
@@ -136,11 +130,7 @@ class _RemindersState extends State<Reminders> {
                       width: 1000,
                       child: SmallDesignCard(
                         child: Column(
-                          children: <Widget>[
-                            Text(
-                              "Reminder 3"
-                            )
-                          ],
+                          children: <Widget>[Text("Reminder 3")],
                         ),
                       ),
                     ),
@@ -150,11 +140,7 @@ class _RemindersState extends State<Reminders> {
                       width: 1000,
                       child: SmallDesignCard(
                         child: Column(
-                          children: <Widget>[
-                            Text(
-                              "Reminder 4"
-                            )
-                          ],
+                          children: <Widget>[Text("Reminder 4")],
                         ),
                       ),
                     ),
@@ -166,7 +152,7 @@ class _RemindersState extends State<Reminders> {
         ),
       );
     }
-    
+
     // Reminder Expanded State
     buildExpanded() {
       return Container(
@@ -178,10 +164,12 @@ class _RemindersState extends State<Reminders> {
                 padding: EdgeInsets.only(bottom: 10.0),
                 child: Row(
                   children: <Widget>[
-                    Text("Reminders",
-                      style: TextStyle(fontSize: 30, 
-                      fontWeight: FontWeight.bold, 
-                      fontFamily: "Ariel"), 
+                    Text(
+                      "Reminders",
+                      style: TextStyle(
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: "Ariel"),
                       textAlign: TextAlign.start,
                     ),
                   ],
@@ -319,9 +307,9 @@ class _RemindersState extends State<Reminders> {
                           child: Text(
                             controller.expanded ? "Collapse" : "Expand",
                             style: Theme.of(context)
-                                    .textTheme
-                                    .button
-                                    .copyWith(color: Colors.deepOrange),
+                                .textTheme
+                                .button
+                                .copyWith(color: Colors.deepOrange),
                           ),
                           onPressed: () {
                             controller.toggle();
@@ -346,15 +334,11 @@ class Bills extends StatefulWidget {
 }
 
 class _BillsState extends State<Bills> {
-  
-
-
   @override
   Widget build(BuildContext context) {
-    
     // Bills Collapsed State
     buildCollapsed() {
-      return Container (
+      return Container(
         child: Padding(
           padding: EdgeInsets.all(1),
           child: Column(
@@ -363,10 +347,12 @@ class _BillsState extends State<Bills> {
                 padding: EdgeInsets.only(bottom: 10.0),
                 child: Row(
                   children: <Widget>[
-                    Text("Payments",
-                      style: TextStyle(fontSize: 30, 
-                      fontWeight: FontWeight.bold, 
-                      fontFamily: "Ariel"), 
+                    Text(
+                      "Payments",
+                      style: TextStyle(
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: "Ariel"),
                       textAlign: TextAlign.start,
                     ),
                   ],
@@ -379,11 +365,7 @@ class _BillsState extends State<Bills> {
                       width: 1000,
                       child: SmallDesignCard(
                         child: Column(
-                          children: <Widget>[
-                            Text(
-                              "Payment 1"
-                            )
-                          ],
+                          children: <Widget>[Text("Payment 1")],
                         ),
                       ),
                     ),
@@ -393,11 +375,7 @@ class _BillsState extends State<Bills> {
                       width: 1000,
                       child: SmallDesignCard(
                         child: Column(
-                          children: <Widget>[
-                            Text(
-                              "Payment 2"
-                            )
-                          ],
+                          children: <Widget>[Text("Payment 2")],
                         ),
                       ),
                     ),
@@ -407,11 +385,7 @@ class _BillsState extends State<Bills> {
                       width: 1000,
                       child: SmallDesignCard(
                         child: Column(
-                          children: <Widget>[
-                            Text(
-                              "Payment 3"
-                            )
-                          ],
+                          children: <Widget>[Text("Payment 3")],
                         ),
                       ),
                     ),
@@ -421,11 +395,7 @@ class _BillsState extends State<Bills> {
                       width: 1000,
                       child: SmallDesignCard(
                         child: Column(
-                          children: <Widget>[
-                            Text(
-                              "Payment 4"
-                            )
-                          ],
+                          children: <Widget>[Text("Payment 4")],
                         ),
                       ),
                     ),
@@ -437,6 +407,7 @@ class _BillsState extends State<Bills> {
         ),
       );
     }
+
     // Bills Expanded State
     buildExpanded() {
       return Container(
@@ -448,10 +419,12 @@ class _BillsState extends State<Bills> {
                 padding: EdgeInsets.only(bottom: 10.0),
                 child: Row(
                   children: <Widget>[
-                    Text("Payments",
-                      style: TextStyle(fontSize: 30, 
-                      fontWeight: FontWeight.bold, 
-                      fontFamily: "Ariel"), 
+                    Text(
+                      "Payments",
+                      style: TextStyle(
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: "Ariel"),
                       textAlign: TextAlign.start,
                     ),
                   ],
@@ -589,9 +562,9 @@ class _BillsState extends State<Bills> {
                           child: Text(
                             controller.expanded ? "Collapse" : "Expand",
                             style: Theme.of(context)
-                                    .textTheme
-                                    .button
-                                    .copyWith(color: Colors.blue),
+                                .textTheme
+                                .button
+                                .copyWith(color: Colors.blue),
                           ),
                           onPressed: () {
                             controller.toggle();

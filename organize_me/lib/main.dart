@@ -19,9 +19,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-
         primarySwatch: Colors.blue,
-
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: MyHomePage(title: 'Organize Me'),
@@ -36,6 +34,19 @@ class MyHomePage extends StatefulWidget {
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
+}
+
+class ItemData {
+  ItemData(this.title, this.key);
+
+  final String title;
+
+  final Key key;
+}
+
+enum DraggingMode {
+  iOS,
+  Android,
 }
 
 class _MyHomePageState extends State<MyHomePage> {
@@ -71,7 +82,7 @@ class _MyHomePageState extends State<MyHomePage> {
       TitleText = "CurrentPage index error";
     }
 
-    return WillPopScope (
+    return WillPopScope(
       child: Scaffold(
         appBar: AppBar(
           title: Text(TitleText),
@@ -88,17 +99,11 @@ class _MyHomePageState extends State<MyHomePage> {
           },
           items: [
             BottomNavigationBarItem(
-              icon: new Icon(Icons.calendar_today),
-              title: Text('Home')
-            ),
+                icon: new Icon(Icons.calendar_today), title: Text('Home')),
             BottomNavigationBarItem(
-              icon: new Icon(Icons.dashboard),
-              title: Text('Customize')
-            ),
+                icon: new Icon(Icons.dashboard), title: Text('Customize')),
             BottomNavigationBarItem(
-              icon: new Icon(Icons.settings),
-              title: Text('Settings')
-            )
+                icon: new Icon(Icons.settings), title: Text('Settings'))
           ],
         ),
       ),
@@ -111,5 +116,4 @@ class _MyHomePageState extends State<MyHomePage> {
       _currentIndex = index;
     });
   }
-
 }
