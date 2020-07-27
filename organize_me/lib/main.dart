@@ -36,19 +36,6 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-class ItemData {
-  ItemData(this.title, this.key);
-
-  final String title;
-
-  final Key key;
-}
-
-enum DraggingMode {
-  iOS,
-  Android,
-}
-
 class _MyHomePageState extends State<MyHomePage> {
   int _currentIndex = 0;
 

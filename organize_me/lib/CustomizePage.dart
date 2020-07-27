@@ -10,28 +10,25 @@ class CustomizePage extends StatefulWidget {
   _CustomizePageState createState() => _CustomizePageState();
 }
 
+class ItemData {
+  ItemData(this.title, this.key);
+
+  final String title;
+
+  // Each item in reorderable list needs stable and unique key
+  final Key key;
+}
+
+enum DraggingMode {
+  iOS,
+  Android,
+}
+
 class _CustomizePageState extends State<CustomizePage> {
-  
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      
-    );
-  }
-}
-
-class ChangeHome extends StatefulWidget {
-  @override
-  _ChangeHomeState createState() => _ChangeHomeState();
-}
-
-class _ChangeHomeState extends State<ChangeHome> {
-  // Reorderable List Code
   List<ItemData> _items;
   _CustomizePageState() {
     _items = List();
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < 3; ++i) {
       String label = "List item $i";
       if (i == 5) {
         label += ". This item has a long label and will be wrapped.";
@@ -49,8 +46,8 @@ class _ChangeHomeState extends State<ChangeHome> {
     int draggingIndex = _indexOfKey(item);
     int newPositionIndex = _indexOfKey(newPosition);
 
-    // Uncomment to allow only even target reorder position
-    // if (newPostitionIndex % 2 == 1)
+    // Uncomment to allow only even target reorder possition
+    // if (newPositionIndex % 2 == 1)
     //   return false;
 
     final draggedItem = _items[draggingIndex];
@@ -67,50 +64,45 @@ class _ChangeHomeState extends State<ChangeHome> {
     debugPrint("Reordering finished for ${draggedItem.title}}");
   }
 
+  //
   // Reordering works by having ReorderableList widget in hierarchy
   // containing ReorderableItems widgets
+  //
 
   DraggingMode _draggingMode = DraggingMode.iOS;
 
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: ReorderableList(
-          onReorder: this._reorderCallback,
-          onReorderDone: this._reorderDone,
-          // decoratePlaceholder: (Widget item, double opacity) {
-          // return DecoratedPlaceholder(widget: item, offset: 0);
-          // },
-          child: Column(
-            children: <Widget>[
-              CustomScrollView(
-                // cacheExtent: 3000,
-                slivers: <Widget>[
-                  SliverPadding(
-                    padding: EdgeInsets.only(
-                        bottom: MediaQuery.of(context).padding.bottom),
-                    sliver: SliverList(
-                      delegate: SliverChildBuilderDelegate(
-                          (BuildContext context, int index) {
-                        return Item(
-                          data: _items[index],
-                          // first and last attributes affect border drawn during dragging
-                          isFirst: index == 0,
-                          isLast: index == _items.length - 1,
-                          draggingMode: _draggingMode,
-                        );
-                      }),
-                    ),
-                  )
-                ],
-              )
-            ],
-          ),
+        onReorder: this._reorderCallback,
+        onReorderDone: this._reorderDone,
+        // decoratePlaceholder: (Widget item, double opacity) {
+        // return DecoratedPlaceholder(widget: item, offset: 0);
+        // },
+        child: Column(
+          children: <Widget>[
+            DesignCard(
+              child: Text("Top Card"),
+            ),
+            Container(
+              child: ListView.builder(
+                  itemBuilder: (BuildContext context, int index) {
+                return Item(
+                  data: _items[index],
+                  isFirst: index == 0,
+                  isLast: index == _items.length - 1,
+                  draggingMode: _draggingMode,
+                );
+              }),
+            )
+          ],
         ),
+      ),
     );
   }
+}
 
-  class Item extends StatelessWidget {
+class Item extends StatelessWidget {
   Item({
     this.data,
     this.isFirst,
@@ -128,22 +120,22 @@ class _ChangeHomeState extends State<ChangeHome> {
 
     if (state == ReorderableItemState.dragProxy ||
         state == ReorderableItemState.dragProxyFinished) {
-      // slightly transparent background white dragging (just like iOS)
+      // slightly transparent background white dragging (just like on iOS)
       decoration = BoxDecoration(color: Color(0xD0FFFFFF));
     } else {
       bool placeholder = state == ReorderableItemState.placeholder;
       decoration = BoxDecoration(
           border: Border(
               top: isFirst && !placeholder
-                  ? Divider.createBorderSide(context)
+                  ? Divider.createBorderSide(context) //
                   : BorderSide.none,
               bottom: isLast && placeholder
-                  ? BorderSide.none
+                  ? BorderSide.none //
                   : Divider.createBorderSide(context)),
           color: placeholder ? null : Colors.white);
     }
 
-    // For iOS dragging mode, there will be drag handle on the rigth that triggers
+    // For iOS dragging mode, there will be drag handle on the right that triggers
     // reordering; For android mode it will be just an empty container
     Widget dragHandle = draggingMode == DraggingMode.iOS
         ? ReorderableListener(
@@ -160,47 +152,47 @@ class _ChangeHomeState extends State<ChangeHome> {
     Widget content = Container(
       decoration: decoration,
       child: SafeArea(
-        top: false,
-        bottom: false,
-        child: Opacity(
-          // hide content for placeholder
-          opacity: state == ReorderableItemState.placeholder ? 0.0 : 1.0,
-          child: IntrinsicHeight(
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: <Widget>[
-                Expanded(
-                    child: Padding(
-                  padding:
-                      EdgeInsets.symmetric(vertical: 14.0, horizontal: 14.0),
-                  child: Text(data.title,
-                      style: Theme.of(context).textTheme.subtitle1),
-                )),
-                // Triggers the reordering
-                dragHandle,
-              ],
+          top: false,
+          bottom: false,
+          child: Opacity(
+            // hide content for placeholder
+            opacity: state == ReorderableItemState.placeholder ? 0.0 : 1.0,
+            child: IntrinsicHeight(
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: <Widget>[
+                  Expanded(
+                      child: Padding(
+                    padding:
+                        EdgeInsets.symmetric(vertical: 14.0, horizontal: 14.0),
+                    child: Text(data.title,
+                        style: Theme.of(context).textTheme.subtitle1),
+                  )),
+                  // Triggers the reordering
+                  dragHandle,
+                ],
+              ),
             ),
-          ),
-        ),
-      ),
+          )),
     );
 
+    // For android dragging mode, wrap the entire content in DelayedReorderableListener
     if (draggingMode == DraggingMode.Android) {
       content = DelayedReorderableListener(
         child: content,
       );
     }
+
     return content;
   }
 
   @override
   Widget build(BuildContext context) {
-    return ReorderableItem(key: data.key, childBuilder: _buildChild);
+    return ReorderableItem(
+        key: data.key, //
+        childBuilder: _buildChild);
   }
 }
-}
-
-
 
 /*  OLD LAYOUT CODE THAT WAS STATIC
   @override

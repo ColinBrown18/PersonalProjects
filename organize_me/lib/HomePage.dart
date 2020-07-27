@@ -36,7 +36,6 @@ class _HomePageState extends State<HomePage> {
         child: ListView(
           children: <Widget>[
             // CALENDAR CODE GOES HERE
-
             DesignCard(
               child: Column(
                 children: <Widget>[
