@@ -76,18 +76,23 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  flutter_reorderable_list:
-    dependency: "direct main"
-    description:
-      name: flutter_reorderable_list
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.1.4"
   flutter_test:
     dependency: "direct dev"
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_web_plugins:
+    dependency: transitive
+    description: flutter
+    source: sdk
+    version: "0.0.0"
+  fluttertoast:
+    dependency: "direct main"
+    description:
+      name: fluttertoast
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "7.0.1+1"
   image:
     dependency: transitive
     description:
