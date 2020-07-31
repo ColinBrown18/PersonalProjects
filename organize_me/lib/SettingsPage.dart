@@ -42,6 +42,10 @@ class _SettingsPageState extends State<SettingsPage> {
                         Text(
                           ProfileInfo[0],
                           style: TextStyle(fontSize: 24),
+                        ),
+                        IconButton(
+                          icon: new Icon(Icons.edit),
+                          iconSize: 20,
                         )
                       ],
                     ),

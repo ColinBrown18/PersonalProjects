@@ -46,7 +46,8 @@ class _HomePageState extends State<HomePage> {
                         style: TextStyle(
                             fontSize: 30,
                             fontWeight: FontWeight.bold,
-                            fontFamily: "Ariel"),
+                            fontFamily: "Ariel",
+                            decoration: TextDecoration.underline),
                         textAlign: TextAlign.start,
                       )
                     ],
@@ -96,7 +97,8 @@ class _RemindersState extends State<Reminders> {
                       style: TextStyle(
                           fontSize: 30,
                           fontWeight: FontWeight.bold,
-                          fontFamily: "Ariel"),
+                          fontFamily: "Ariel",
+                          decoration: TextDecoration.underline),
                       textAlign: TextAlign.start,
                     ),
                   ],
@@ -168,7 +170,8 @@ class _RemindersState extends State<Reminders> {
                       style: TextStyle(
                           fontSize: 30,
                           fontWeight: FontWeight.bold,
-                          fontFamily: "Ariel"),
+                          fontFamily: "Ariel",
+                          decoration: TextDecoration.underline),
                       textAlign: TextAlign.start,
                     ),
                   ],
@@ -351,7 +354,8 @@ class _BillsState extends State<Bills> {
                       style: TextStyle(
                           fontSize: 30,
                           fontWeight: FontWeight.bold,
-                          fontFamily: "Ariel"),
+                          fontFamily: "Ariel",
+                          decoration: TextDecoration.underline),
                       textAlign: TextAlign.start,
                     ),
                   ],
@@ -423,7 +427,8 @@ class _BillsState extends State<Bills> {
                       style: TextStyle(
                           fontSize: 30,
                           fontWeight: FontWeight.bold,
-                          fontFamily: "Ariel"),
+                          fontFamily: "Ariel",
+                          decoration: TextDecoration.underline),
                       textAlign: TextAlign.start,
                     ),
                   ],

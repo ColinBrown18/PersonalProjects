@@ -25,20 +25,24 @@ class _CustomizePageState extends State<CustomizePage> {
     return Container(
       child: Column(
         children: <Widget>[
-          Flexible(
+          Container(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                "Add",
+                textAlign: TextAlign.start,
+                style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                    decoration: TextDecoration.underline),
+              ),
+            ),
+          ),
+          Container(
+            //fit: FlexFit.loose,
             child: DesignCard(
               child: Column(
                 children: <Widget>[
-                  Row(
-                    children: <Widget>[
-                      Text(
-                        "Add",
-                        textAlign: TextAlign.start,
-                        style: TextStyle(
-                            fontSize: 30, fontWeight: FontWeight.bold),
-                      ),
-                    ],
-                  ),
                   Row(
                     children: <Widget>[
                       Padding(
@@ -66,14 +70,24 @@ class _CustomizePageState extends State<CustomizePage> {
                         iconSize: 40,
                       )
                     ],
-                  )
+                  ),
                 ],
               ),
             ),
           ),
-          Flexible(
-            child: ReorderableList(),
-          )
+          Container(
+              child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              "Card Order",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
+                  decoration: TextDecoration.underline),
+            ),
+          )),
+          Flexible(fit: FlexFit.tight, child: ReorderableList())
         ],
       ),
     );
