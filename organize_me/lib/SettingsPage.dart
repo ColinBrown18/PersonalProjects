@@ -43,15 +43,11 @@ class _SettingsPageState extends State<SettingsPage> {
                           ProfileInfo[0],
                           style: TextStyle(fontSize: 24),
                         ),
-                        IconButton(
-                          icon: new Icon(Icons.edit),
-                          iconSize: 20,
-                        )
                       ],
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                    padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
                     child: Row(
                       children: <Widget>[
                         Text(
@@ -63,12 +59,12 @@ class _SettingsPageState extends State<SettingsPage> {
                         Text(
                           ProfileInfo[1],
                           style: TextStyle(fontSize: 24),
-                        )
+                        ),
                       ],
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                    padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
                     child: Row(
                       children: <Widget>[
                         Text(
@@ -80,12 +76,12 @@ class _SettingsPageState extends State<SettingsPage> {
                         Text(
                           ProfileInfo[2],
                           style: TextStyle(fontSize: 24),
-                        )
+                        ),
                       ],
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                    padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
                     child: Row(
                       children: <Widget>[
                         Text(
@@ -102,14 +98,35 @@ class _SettingsPageState extends State<SettingsPage> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 320.0),
-                    child: OutlineButton(
-                      child: Text(
-                        "Log Out",
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                  )
+                      padding: const EdgeInsets.only(top: 280.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          OutlineButton(
+                              child: RichText(
+                            text: TextSpan(children: [
+                              TextSpan(
+                                text: "Edit ",
+                                style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              WidgetSpan(child: Icon(Icons.edit))
+                            ]),
+                          )),
+                          Text("             "),
+                          OutlineButton(
+                            child: Text(
+                              "Log Out",
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          )
+                        ],
+                      ))
                 ],
               ),
             ),

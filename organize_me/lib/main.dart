@@ -60,9 +60,9 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     if (_currentIndex == 0) {
-      TitleText = "Summary";
+      TitleText = "Summary of Your Life";
     } else if (_currentIndex == 1) {
-      TitleText = "Customize";
+      TitleText = "Customize Your Life";
     } else if (_currentIndex == 2) {
       TitleText = "Settings";
     } else {

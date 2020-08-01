@@ -10,15 +10,6 @@ class CustomizePage extends StatefulWidget {
   _CustomizePageState createState() => _CustomizePageState();
 }
 
-// class ItemData {
-//   ItemData(this.title, this.key);
-
-//   final String title;
-
-//   // Each item in reorderable list needs stable and unique key
-//   final Key key;
-// }
-
 class _CustomizePageState extends State<CustomizePage> {
   @override
   Widget build(BuildContext context) {
@@ -44,13 +35,11 @@ class _CustomizePageState extends State<CustomizePage> {
               child: Column(
                 children: <Widget>[
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Padding(
-                        padding: const EdgeInsets.only(left: 75),
-                        child: Text("Add Payment",
-                            style: TextStyle(fontSize: 24),
-                            textAlign: TextAlign.end),
-                      ),
+                      Text("Add Payment",
+                          style: TextStyle(fontSize: 24),
+                          textAlign: TextAlign.end),
                       IconButton(
                         icon: new Icon(Icons.add_box),
                         iconSize: 40,
@@ -58,13 +47,11 @@ class _CustomizePageState extends State<CustomizePage> {
                     ],
                   ),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Padding(
-                        padding: const EdgeInsets.only(left: 75),
-                        child: Text("Add Payment",
-                            style: TextStyle(fontSize: 24),
-                            textAlign: TextAlign.end),
-                      ),
+                      Text("Add Payment",
+                          style: TextStyle(fontSize: 24),
+                          textAlign: TextAlign.end),
                       IconButton(
                         icon: new Icon(Icons.add_box),
                         iconSize: 40,
@@ -77,7 +64,7 @@ class _CustomizePageState extends State<CustomizePage> {
           ),
           Container(
               child: Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.fromLTRB(8, 10, 8, 8),
             child: Text(
               "Card Order",
               textAlign: TextAlign.center,
@@ -101,6 +88,7 @@ class ReorderableList extends StatefulWidget {
 
 class _ReorderableListState extends State<ReorderableList> {
   List<String> alphabetList = ['Calendar', 'Reminder', 'Payments'];
+  // If another is added it will expand the container too much
 
   @override
   Widget build(BuildContext context) {
@@ -152,14 +140,15 @@ class ListViewCard extends StatefulWidget {
 class _ListViewCard extends State<ListViewCard> {
   @override
   Widget build(BuildContext context) {
-    return DesignCard(
-      // margin: EdgeInsets.all(4),
-      // color: Colors.white,
-      child: InkWell(
-        splashColor: Colors.blue,
-        onTap: () => Fluttertoast.showToast(
-            msg: "Item ${widget.listItems[widget.index]} selected.",
-            toastLength: Toast.LENGTH_SHORT),
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(8, 1, 8, 1),
+      child: MedDesignCard(
+        // margin: EdgeInsets.all(4),
+        // color: Colors.white,
+        //splashColor: Colors.blue,
+        //onTap: () => Fluttertoast.showToast(
+        //msg: "Item ${widget.listItems[widget.index]} selected.",
+        //toastLength: Toast.LENGTH_SHORT),
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
@@ -179,8 +168,8 @@ class _ListViewCard extends State<ListViewCard> {
                     padding: const EdgeInsets.all(8.0),
                     alignment: Alignment.topLeft,
                     child: Text(
-                      'Title ${widget.listItems[widget.index]}',
-                      style: TextStyle(fontSize: 28),
+                      '${widget.listItems[widget.index]}',
+                      style: TextStyle(fontSize: 24),
                       textAlign: TextAlign.left,
                       maxLines: 5,
                     ),

@@ -35,23 +35,26 @@ class _HomePageState extends State<HomePage> {
         ),
         child: ListView(
           children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.fromLTRB(15, 10, 0, 5),
+              child: Row(
+                children: <Widget>[
+                  Text(
+                    "Calendar",
+                    style: TextStyle(
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: "Ariel",
+                        decoration: TextDecoration.underline),
+                    textAlign: TextAlign.start,
+                  )
+                ],
+              ),
+            ),
             // CALENDAR CODE GOES HERE
             DesignCard(
               child: Column(
                 children: <Widget>[
-                  Row(
-                    children: <Widget>[
-                      Text(
-                        "Calendar",
-                        style: TextStyle(
-                            fontSize: 30,
-                            fontWeight: FontWeight.bold,
-                            fontFamily: "Ariel",
-                            decoration: TextDecoration.underline),
-                        textAlign: TextAlign.start,
-                      )
-                    ],
-                  ),
                   TableCalendar(
                     calendarStyle: CalendarStyle(
                       todayColor: Colors.blue[600],
@@ -64,7 +67,39 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             // END OF CALENDAR CODE
+            Padding(
+              padding: const EdgeInsets.fromLTRB(15, 5, 0, 5),
+              child: Row(
+                children: <Widget>[
+                  Text(
+                    "Reminders",
+                    style: TextStyle(
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: "Ariel",
+                        decoration: TextDecoration.underline),
+                    textAlign: TextAlign.start,
+                  ),
+                ],
+              ),
+            ),
             Reminders(),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(15, 5, 0, 5),
+              child: Row(
+                children: <Widget>[
+                  Text(
+                    "Payments",
+                    style: TextStyle(
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: "Ariel",
+                        decoration: TextDecoration.underline),
+                    textAlign: TextAlign.start,
+                  ),
+                ],
+              ),
+            ),
             Bills(),
           ],
         ),
@@ -88,22 +123,6 @@ class _RemindersState extends State<Reminders> {
           padding: EdgeInsets.all(1),
           child: Column(
             children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.only(bottom: 10.0),
-                child: Row(
-                  children: <Widget>[
-                    Text(
-                      "Reminders",
-                      style: TextStyle(
-                          fontSize: 30,
-                          fontWeight: FontWeight.bold,
-                          fontFamily: "Ariel",
-                          decoration: TextDecoration.underline),
-                      textAlign: TextAlign.start,
-                    ),
-                  ],
-                ),
-              ),
               Row(
                 children: <Widget>[
                   Flexible(
@@ -161,22 +180,6 @@ class _RemindersState extends State<Reminders> {
           padding: EdgeInsets.all(1),
           child: Column(
             children: <Widget>[
-              Padding(
-                padding: EdgeInsets.only(bottom: 10.0),
-                child: Row(
-                  children: <Widget>[
-                    Text(
-                      "Reminders",
-                      style: TextStyle(
-                          fontSize: 30,
-                          fontWeight: FontWeight.bold,
-                          fontFamily: "Ariel",
-                          decoration: TextDecoration.underline),
-                      textAlign: TextAlign.start,
-                    ),
-                  ],
-                ),
-              ),
               MedDesignCard(
                 child: Row(
                   children: <Widget>[
@@ -345,22 +348,6 @@ class _BillsState extends State<Bills> {
           padding: EdgeInsets.all(1),
           child: Column(
             children: <Widget>[
-              Padding(
-                padding: EdgeInsets.only(bottom: 10.0),
-                child: Row(
-                  children: <Widget>[
-                    Text(
-                      "Payments",
-                      style: TextStyle(
-                          fontSize: 30,
-                          fontWeight: FontWeight.bold,
-                          fontFamily: "Ariel",
-                          decoration: TextDecoration.underline),
-                      textAlign: TextAlign.start,
-                    ),
-                  ],
-                ),
-              ),
               Row(
                 children: <Widget>[
                   Flexible(
@@ -418,22 +405,6 @@ class _BillsState extends State<Bills> {
           padding: EdgeInsets.all(1),
           child: Column(
             children: <Widget>[
-              Padding(
-                padding: EdgeInsets.only(bottom: 10.0),
-                child: Row(
-                  children: <Widget>[
-                    Text(
-                      "Payments",
-                      style: TextStyle(
-                          fontSize: 30,
-                          fontWeight: FontWeight.bold,
-                          fontFamily: "Ariel",
-                          decoration: TextDecoration.underline),
-                      textAlign: TextAlign.start,
-                    ),
-                  ],
-                ),
-              ),
               MedDesignCard(
                 child: Row(
                   children: <Widget>[
