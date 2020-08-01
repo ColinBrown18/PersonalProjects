@@ -5,6 +5,7 @@ import 'Layouts.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:expandable/expandable.dart';
 import 'main.dart';
+import 'CustomizePage.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -12,6 +13,33 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  @override
+  Widget build(BuildContext context) {
+    return WillPopScope(
+      child: ExpandableTheme(
+        data: const ExpandableThemeData(
+          iconColor: Colors.blue,
+          useInkWell: true,
+        ),
+        child: ListView(setState()
+            // children: <Widget>[
+
+            //   // Calendar(),
+            //   // Reminders(),
+            //   // Bills(),
+            // ],
+            ),
+      ),
+    );
+  }
+}
+
+class Calendar extends StatefulWidget {
+  @override
+  _CalendarState createState() => _CalendarState();
+}
+
+class _CalendarState extends State<Calendar> {
   CalendarController _calendarController;
   @override
   void initState() {
@@ -27,16 +55,12 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      child: ExpandableTheme(
-        data: const ExpandableThemeData(
-          iconColor: Colors.blue,
-          useInkWell: true,
-        ),
-        child: ListView(
+    return Container(
+      child: DesignCard(
+        child: Column(
           children: <Widget>[
             Padding(
-              padding: const EdgeInsets.fromLTRB(15, 10, 0, 5),
+              padding: const EdgeInsets.fromLTRB(8, 0, 0, 8),
               child: Row(
                 children: <Widget>[
                   Text(
@@ -51,56 +75,14 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
             ),
-            // CALENDAR CODE GOES HERE
-            DesignCard(
-              child: Column(
-                children: <Widget>[
-                  TableCalendar(
-                    calendarStyle: CalendarStyle(
-                      todayColor: Colors.blue[600],
-                      selectedColor: Colors.blue[900],
-                    ),
-                    initialCalendarFormat: CalendarFormat.week,
-                    calendarController: _calendarController,
-                  )
-                ],
+            TableCalendar(
+              calendarStyle: CalendarStyle(
+                todayColor: Colors.blue[600],
+                selectedColor: Colors.blue[900],
               ),
-            ),
-            // END OF CALENDAR CODE
-            Padding(
-              padding: const EdgeInsets.fromLTRB(15, 5, 0, 5),
-              child: Row(
-                children: <Widget>[
-                  Text(
-                    "Reminders",
-                    style: TextStyle(
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold,
-                        fontFamily: "Ariel",
-                        decoration: TextDecoration.underline),
-                    textAlign: TextAlign.start,
-                  ),
-                ],
-              ),
-            ),
-            Reminders(),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(15, 5, 0, 5),
-              child: Row(
-                children: <Widget>[
-                  Text(
-                    "Payments",
-                    style: TextStyle(
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold,
-                        fontFamily: "Ariel",
-                        decoration: TextDecoration.underline),
-                    textAlign: TextAlign.start,
-                  ),
-                ],
-              ),
-            ),
-            Bills(),
+              initialCalendarFormat: CalendarFormat.week,
+              calendarController: _calendarController,
+            )
           ],
         ),
       ),
@@ -123,6 +105,22 @@ class _RemindersState extends State<Reminders> {
           padding: EdgeInsets.all(1),
           child: Column(
             children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.fromLTRB(8, 0, 0, 8),
+                child: Row(
+                  children: <Widget>[
+                    Text(
+                      "Reminders",
+                      style: TextStyle(
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: "Ariel",
+                          decoration: TextDecoration.underline),
+                      textAlign: TextAlign.start,
+                    ),
+                  ],
+                ),
+              ),
               Row(
                 children: <Widget>[
                   Flexible(
@@ -180,6 +178,22 @@ class _RemindersState extends State<Reminders> {
           padding: EdgeInsets.all(1),
           child: Column(
             children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.fromLTRB(8, 0, 0, 8),
+                child: Row(
+                  children: <Widget>[
+                    Text(
+                      "Reminders",
+                      style: TextStyle(
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: "Ariel",
+                          decoration: TextDecoration.underline),
+                      textAlign: TextAlign.start,
+                    ),
+                  ],
+                ),
+              ),
               MedDesignCard(
                 child: Row(
                   children: <Widget>[
@@ -348,6 +362,22 @@ class _BillsState extends State<Bills> {
           padding: EdgeInsets.all(1),
           child: Column(
             children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.fromLTRB(8, 0, 0, 8),
+                child: Row(
+                  children: <Widget>[
+                    Text(
+                      "Payments",
+                      style: TextStyle(
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: "Ariel",
+                          decoration: TextDecoration.underline),
+                      textAlign: TextAlign.start,
+                    ),
+                  ],
+                ),
+              ),
               Row(
                 children: <Widget>[
                   Flexible(
@@ -405,6 +435,22 @@ class _BillsState extends State<Bills> {
           padding: EdgeInsets.all(1),
           child: Column(
             children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.fromLTRB(8, 0, 0, 8),
+                child: Row(
+                  children: <Widget>[
+                    Text(
+                      "Payments",
+                      style: TextStyle(
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: "Ariel",
+                          decoration: TextDecoration.underline),
+                      textAlign: TextAlign.start,
+                    ),
+                  ],
+                ),
+              ),
               MedDesignCard(
                 child: Row(
                   children: <Widget>[

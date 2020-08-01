@@ -87,7 +87,7 @@ class ReorderableList extends StatefulWidget {
 }
 
 class _ReorderableListState extends State<ReorderableList> {
-  List<String> alphabetList = ['Calendar', 'Reminder', 'Payments'];
+  List<String> pageList = ['Calendar', 'Reminder', 'Payments'];
   // If another is added it will expand the container too much
 
   @override
@@ -99,10 +99,10 @@ class _ReorderableListState extends State<ReorderableList> {
           //scrollDirection: Axis.vertical,
           padding: const EdgeInsets.symmetric(vertical: 8.0),
           children: List.generate(
-            alphabetList.length,
+            pageList.length,
             (index) {
               return ListViewCard(
-                alphabetList,
+                pageList,
                 index,
                 Key('$index'),
               );
@@ -117,8 +117,8 @@ class _ReorderableListState extends State<ReorderableList> {
         if (newIndex > oldIndex) {
           newIndex -= 1;
         }
-        final String item = alphabetList.removeAt(oldIndex);
-        alphabetList.insert(newIndex, item);
+        final String item = pageList.removeAt(oldIndex);
+        pageList.insert(newIndex, item);
       },
     );
   }
