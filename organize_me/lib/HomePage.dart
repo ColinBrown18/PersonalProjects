@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:organize_me/SettingsPage.dart';
 // import 'package:googleapis/calenar/v3.dart';
 // import 'package:googleapis_auth/auth_io.dart';
 import 'Layouts.dart';
@@ -13,23 +14,64 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  Calendar calendar;
+  Reminders reminders;
+  Bills bills;
+  Error error;
+  List<Widget> cardOrder = List<Widget>();
+
+  void initState() {
+    for (int i = 0; i < cardOrder.length; i++) {
+      if (pageList[i] == "Calendar") {
+        cardOrder.add(Calendar());
+      } else if (pageList[i] == "Reminder") {
+        cardOrder.add(Reminders());
+      } else if (pageList[i] == "Payments") {
+        cardOrder.add(Bills());
+      } else {
+        cardOrder.add(Error());
+      }
+    }
+    // calendar = Calendar();
+    // reminders = Reminders();
+    // bills = Bills();
+
+    // cardOrder = [calendar, reminders, bills];
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
       child: ExpandableTheme(
-        data: const ExpandableThemeData(
-          iconColor: Colors.blue,
-          useInkWell: true,
-        ),
-        child: ListView(setState()
-            // children: <Widget>[
+          data: const ExpandableThemeData(
+            iconColor: Colors.blue,
+            useInkWell: true,
+          ),
+          child: ListView(
+            children: <Widget>[cardOrder[0], cardOrder[1], cardOrder[2]],
+          )
+          // children: <Widget>[
+          //   Calendar(),
+          //   Reminders(),
+          //   Bills(),
+          // ],
 
-            //   // Calendar(),
-            //   // Reminders(),
-            //   // Bills(),
-            // ],
-            ),
-      ),
+          ),
+    );
+  }
+}
+
+class Error extends StatefulWidget {
+  @override
+  _ErrorState createState() => _ErrorState();
+}
+
+class _ErrorState extends State<Error> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Text("Error widget was called."),
     );
   }
 }

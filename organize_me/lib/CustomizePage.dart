@@ -10,6 +10,8 @@ class CustomizePage extends StatefulWidget {
   _CustomizePageState createState() => _CustomizePageState();
 }
 
+List<String> pageList = ['Calendar', 'Reminder', 'Payments'];
+
 class _CustomizePageState extends State<CustomizePage> {
   @override
   Widget build(BuildContext context) {
@@ -87,9 +89,6 @@ class ReorderableList extends StatefulWidget {
 }
 
 class _ReorderableListState extends State<ReorderableList> {
-  List<String> pageList = ['Calendar', 'Reminder', 'Payments'];
-  // If another is added it will expand the container too much
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

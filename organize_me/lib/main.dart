@@ -37,33 +37,33 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _currentIndex = 0;
+  int _selectedPage = 0;
 
-  HomePage one;
-  CustomizePage two;
-  SettingsPage three;
-  List<Widget> pages;
+  HomePage home;
+  CustomizePage customize;
+  SettingsPage settings;
+  List<Widget> pages = List<Widget>();
   Widget currentPage;
 
   String TitleText;
 
   void initState() {
-    one = HomePage();
-    two = CustomizePage();
-    three = SettingsPage();
+    home = HomePage();
+    customize = CustomizePage();
+    settings = SettingsPage();
 
-    pages = [one, two, three];
-    currentPage = one;
+    pages = [home, customize, settings];
+    currentPage = home;
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    if (_currentIndex == 0) {
+    if (_selectedPage == 0) {
       TitleText = "Summary of Your Life";
-    } else if (_currentIndex == 1) {
+    } else if (_selectedPage == 1) {
       TitleText = "Customize Your Life";
-    } else if (_currentIndex == 2) {
+    } else if (_selectedPage == 2) {
       TitleText = "Settings";
     } else {
       TitleText = "CurrentPage index error";
@@ -75,12 +75,15 @@ class _MyHomePageState extends State<MyHomePage> {
           title: Text(TitleText),
           //leading: new Container(),
         ),
-        body: currentPage,
+        body: IndexedStack(
+          index: _selectedPage,
+          children: pages,
+        ),
         bottomNavigationBar: BottomNavigationBar(
-          currentIndex: _currentIndex,
+          currentIndex: _selectedPage,
           onTap: (int index) {
             setState(() {
-              _currentIndex = index;
+              _selectedPage = index;
               currentPage = pages[index];
             });
           },
@@ -100,7 +103,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void onTabTapped(int index) {
     setState(() {
-      _currentIndex = index;
+      _selectedPage = index;
     });
   }
 }
