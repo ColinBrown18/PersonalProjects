@@ -30,17 +30,12 @@ class _HomePageState extends State<HomePage> {
         cardOrder.add(Bills());
       }
     }
-
-    // cardOrder.add(Calendar());
-    // cardOrder.add(Reminders());
-    // cardOrder.add(Bills());
-
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
+    return Container(
       child: ExpandableTheme(
           data: const ExpandableThemeData(
             iconColor: Colors.blue,
@@ -48,28 +43,7 @@ class _HomePageState extends State<HomePage> {
           ),
           child: ListView(
             children: <Widget>[cardOrder[0], cardOrder[1], cardOrder[2]],
-          )
-          // children: <Widget>[
-          //   Calendar(),
-          //   Reminders(),
-          //   Bills(),
-          // ],
-
-          ),
-    );
-  }
-}
-
-class Error extends StatefulWidget {
-  @override
-  _ErrorState createState() => _ErrorState();
-}
-
-class _ErrorState extends State<Error> {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: Text("Error widget was called."),
+          )),
     );
   }
 }

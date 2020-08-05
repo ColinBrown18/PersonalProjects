@@ -37,7 +37,7 @@ class _CustomizePageState extends State<CustomizePage> {
               child: Column(
                 children: <Widget>[
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
                       Text("Add Payment",
                           style: TextStyle(fontSize: 24),
@@ -49,7 +49,7 @@ class _CustomizePageState extends State<CustomizePage> {
                     ],
                   ),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
                       Text("Add Payment",
                           style: TextStyle(fontSize: 24),
