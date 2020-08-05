@@ -43,6 +43,9 @@ class _SettingsPageState extends State<SettingsPage> {
                           ProfileInfo[0],
                           style: TextStyle(fontSize: 24),
                         ),
+                        IconButton(
+                          icon: Icon(Icons.edit),
+                        ),
                       ],
                     ),
                   ),
@@ -60,6 +63,9 @@ class _SettingsPageState extends State<SettingsPage> {
                           ProfileInfo[1],
                           style: TextStyle(fontSize: 24),
                         ),
+                        IconButton(
+                          icon: Icon(Icons.edit),
+                        )
                       ],
                     ),
                   ),
@@ -102,20 +108,6 @@ class _SettingsPageState extends State<SettingsPage> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          OutlineButton(
-                              child: RichText(
-                            text: TextSpan(children: [
-                              TextSpan(
-                                text: "Edit ",
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              WidgetSpan(child: Icon(Icons.edit))
-                            ]),
-                          )),
-                          Text("             "),
                           OutlineButton(
                             child: Text(
                               "Log Out",

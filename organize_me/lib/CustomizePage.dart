@@ -19,23 +19,25 @@ class _CustomizePageState extends State<CustomizePage> {
       child: Column(
         children: <Widget>[
           Container(
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                "Add",
-                textAlign: TextAlign.start,
-                style: TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
-                    decoration: TextDecoration.underline),
-              ),
-            ),
-          ),
-          Container(
             //fit: FlexFit.loose,
             child: DesignCard(
               child: Column(
                 children: <Widget>[
+                  Row(
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(8, 0, 0, 8),
+                        child: Text(
+                          "Add",
+                          textAlign: TextAlign.start,
+                          style: TextStyle(
+                              fontSize: 30,
+                              fontWeight: FontWeight.bold,
+                              decoration: TextDecoration.underline),
+                        ),
+                      ),
+                    ],
+                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
@@ -66,10 +68,10 @@ class _CustomizePageState extends State<CustomizePage> {
           ),
           Container(
               child: Padding(
-            padding: const EdgeInsets.fromLTRB(8, 10, 8, 8),
+            padding: const EdgeInsets.fromLTRB(8, 30, 8, 8),
             child: Text(
               "Card Order",
-              textAlign: TextAlign.center,
+              textAlign: TextAlign.start,
               style: TextStyle(
                   fontSize: 30,
                   fontWeight: FontWeight.bold,
