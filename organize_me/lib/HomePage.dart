@@ -21,22 +21,20 @@ class _HomePageState extends State<HomePage> {
   List<Widget> cardOrder = List<Widget>();
 
   void initState() {
-    for (int i = 0; i < cardOrder.length; i++) {
-      if (pageList[i] == "Calendar") {
+    for (int i = 0; i < 3; i++) {
+      if ("${pageList[i]}".toLowerCase() == "calendar") {
         cardOrder.add(Calendar());
-      } else if (pageList[i] == "Reminder") {
+      } else if ("${pageList[i]}".toLowerCase() == "reminder") {
         cardOrder.add(Reminders());
-      } else if (pageList[i] == "Payments") {
+      } else if ("${pageList[i]}".toLowerCase() == "payments") {
         cardOrder.add(Bills());
-      } else {
-        cardOrder.add(Error());
       }
     }
-    // calendar = Calendar();
-    // reminders = Reminders();
-    // bills = Bills();
 
-    // cardOrder = [calendar, reminders, bills];
+    // cardOrder.add(Calendar());
+    // cardOrder.add(Reminders());
+    // cardOrder.add(Bills());
+
     super.initState();
   }
 

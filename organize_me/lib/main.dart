@@ -75,10 +75,7 @@ class _MyHomePageState extends State<MyHomePage> {
           title: Text(TitleText),
           //leading: new Container(),
         ),
-        body: IndexedStack(
-          index: _selectedPage,
-          children: pages,
-        ),
+        body: pages[_selectedPage],
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: _selectedPage,
           onTap: (int index) {
