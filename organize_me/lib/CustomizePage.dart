@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 // import 'package:googleapis/calenar/v3.dart';
 // import 'package:googleapis_auth/auth_io.dart';
 import 'Layouts.dart';
-import 'main.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
+import 'package:intl/intl.dart';
 
 class CustomizePage extends StatefulWidget {
   @override
@@ -41,12 +41,15 @@ class _CustomizePageState extends State<CustomizePage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
-                      Text("Add Payment",
+                      Text("Add Event",
                           style: TextStyle(fontSize: 24),
                           textAlign: TextAlign.end),
-                      IconButton(
-                        icon: new Icon(Icons.add_box),
-                        iconSize: 40,
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(42, 0, 0, 0),
+                        child: IconButton(
+                          icon: new Icon(Icons.add_box),
+                          iconSize: 40,
+                        ),
                       ),
                     ],
                   ),
@@ -56,9 +59,15 @@ class _CustomizePageState extends State<CustomizePage> {
                       Text("Add Payment",
                           style: TextStyle(fontSize: 24),
                           textAlign: TextAlign.end),
-                      IconButton(
-                        icon: new Icon(Icons.add_box),
-                        iconSize: 40,
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
+                        child: IconButton(
+                          icon: new Icon(Icons.add_box),
+                          iconSize: 40,
+                          onPressed: () {
+                            _EventDialog();
+                          },
+                        ),
                       )
                     ],
                   ),
@@ -81,6 +90,70 @@ class _CustomizePageState extends State<CustomizePage> {
           Flexible(fit: FlexFit.tight, child: ReorderableList())
         ],
       ),
+    );
+  }
+
+  void _EventDialog() {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: new Text("New Event:"),
+            content: Container(
+              child: Column(
+                children: <Widget>[
+                  Row(
+                    children: <Widget>[
+                      TextFormField(
+                        decoration: InputDecoration(labelText: "Title"),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: <Widget>[
+                      new FlatButton(
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                          child: Text("Close"))
+                    ],
+                  )
+                ],
+              ),
+            ),
+          );
+        });
+  }
+}
+
+class BasicDateTimeField extends StatelessWidget {
+  final format = DateFormat("yyyy-MM-dd HH:mm");
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Text("Basic date & time field (${format.pattern})"),
+        DateTimeField(
+          format: format,
+          onShowPicker: (context, currentValue) async {
+            final date = await showDatePicker(
+                context: context,
+                initialDate: currentValue ?? DateTime.now(),
+                firstDate: DateTime(1900),
+                lastDate: DateTime(2100));
+            if (date != null) {
+              final time = await showTimePicker(
+                context: context,
+                initialTime:
+                    TimeOfDay.fromDateTime(currentValue ?? DateTime.now()),
+              );
+              return DateTimeField.combine(date, time);
+            } else {
+              return currentValue;
+            }
+          },
+        )
+      ],
     );
   }
 }
