@@ -49,6 +49,9 @@ class _CustomizePageState extends State<CustomizePage> {
                         child: IconButton(
                           icon: new Icon(Icons.add_box),
                           iconSize: 40,
+                          onPressed: () {
+                            _eventDiaglog();
+                          },
                         ),
                       ),
                     ],
@@ -65,7 +68,7 @@ class _CustomizePageState extends State<CustomizePage> {
                           icon: new Icon(Icons.add_box),
                           iconSize: 40,
                           onPressed: () {
-                            _eventDialog();
+                            _paymentDialog();
                           },
                         ),
                       )
@@ -93,7 +96,8 @@ class _CustomizePageState extends State<CustomizePage> {
     );
   }
 
-  void _eventDialog() {
+// THIS WILL HAVE A TITLE, DESCRIPTION, AND DATE
+  void _eventDiaglog() {
     showDialog(
         context: context,
         builder: (BuildContext context) {
@@ -101,7 +105,7 @@ class _CustomizePageState extends State<CustomizePage> {
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
             child: Container(
-              height: 200,
+              height: 320,
               child: Padding(
                 padding: const EdgeInsets.all(12),
                 child: Column(
@@ -109,14 +113,104 @@ class _CustomizePageState extends State<CustomizePage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 0, 0, 5),
+                      child: (TextField(
+                        decoration: InputDecoration(labelText: "Title"),
+                      )),
+                    ),
+                    Padding(
                       padding: const EdgeInsets.fromLTRB(0, 5, 0, 5),
+                      child: (TextField(
+                        decoration: InputDecoration(labelText: "Summary"),
+                      )),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 15, 0, 0),
                       child: Text(
                         "Enter Date and Time: ",
                         style: TextStyle(fontSize: 20),
                       ),
                     ),
                     Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 0, 0, 5),
+                      child: BasicDateTimeField(),
+                    ),
+                    Padding(
                       padding: const EdgeInsets.fromLTRB(0, 5, 0, 5),
+                      child: SizedBox(
+                        width: 310,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(right: 15),
+                              child: RaisedButton(
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                                child: Text(
+                                  "Create",
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                                color: const Color(0xFF1BC0C5),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 15),
+                              child: RaisedButton(
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                                child: Text(
+                                  "Cancel",
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                                color: const Color(0xFF1BC0C5),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ),
+          );
+        });
+  }
+
+// THIS WILL HAVE A TITLE AND DATE
+  void _paymentDialog() {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return Dialog(
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+            child: Container(
+              height: 250,
+              child: Padding(
+                padding: const EdgeInsets.all(12),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 0, 0, 5),
+                      child: (TextField(
+                        decoration: InputDecoration(labelText: "Title"),
+                      )),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 15, 0, 0),
+                      child: Text(
+                        "Enter Date and Time: ",
+                        style: TextStyle(fontSize: 20),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 0, 0, 5),
                       child: BasicDateTimeField(),
                     ),
                     Padding(
@@ -133,7 +227,7 @@ class _CustomizePageState extends State<CustomizePage> {
                                   Navigator.of(context).pop();
                                 },
                                 child: Text(
-                                  "Save",
+                                  "Create",
                                   style: TextStyle(color: Colors.white),
                                 ),
                                 color: const Color(0xFF1BC0C5),
