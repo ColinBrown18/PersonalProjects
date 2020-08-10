@@ -41,7 +41,7 @@ Home Page and Cards:
 		- Send notifications for when a payment is coming up
 
 Customize Page:
-	- Have buttons to create new dates, reminders, and payments
+	- Have buttons to create new dates, reminders, and payments (WORKING ON)
 	- When a new event is created, it should sync it accross all or at least display properly
 	- Allow users to change the home format (DONE)
 	
