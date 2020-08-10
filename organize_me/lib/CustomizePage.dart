@@ -65,7 +65,7 @@ class _CustomizePageState extends State<CustomizePage> {
                           icon: new Icon(Icons.add_box),
                           iconSize: 40,
                           onPressed: () {
-                            _EventDialog();
+                            _eventDialog();
                           },
                         ),
                       )
@@ -93,32 +93,71 @@ class _CustomizePageState extends State<CustomizePage> {
     );
   }
 
-  void _EventDialog() {
+  void _eventDialog() {
     showDialog(
         context: context,
         builder: (BuildContext context) {
-          return AlertDialog(
-            title: new Text("New Event:"),
-            content: Container(
-              child: Column(
-                children: <Widget>[
-                  Row(
-                    children: <Widget>[
-                      TextFormField(
-                        decoration: InputDecoration(labelText: "Title"),
+          return Dialog(
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+            child: Container(
+              height: 200,
+              child: Padding(
+                padding: const EdgeInsets.all(12),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 5, 0, 5),
+                      child: Text(
+                        "Enter Date and Time: ",
+                        style: TextStyle(fontSize: 20),
                       ),
-                    ],
-                  ),
-                  Row(
-                    children: <Widget>[
-                      new FlatButton(
-                          onPressed: () {
-                            Navigator.of(context).pop();
-                          },
-                          child: Text("Close"))
-                    ],
-                  )
-                ],
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 5, 0, 5),
+                      child: BasicDateTimeField(),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 5, 0, 5),
+                      child: SizedBox(
+                        width: 320,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(right: 15),
+                              child: RaisedButton(
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                                child: Text(
+                                  "Save",
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                                color: const Color(0xFF1BC0C5),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 15),
+                              child: RaisedButton(
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                                child: Text(
+                                  "Cancel",
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                                color: const Color(0xFF1BC0C5),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    )
+                  ],
+                ),
               ),
             ),
           );
@@ -132,7 +171,7 @@ class BasicDateTimeField extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text("Basic date & time field (${format.pattern})"),
+        //Text("Basic date & time field (${format.pattern})"),
         DateTimeField(
           format: format,
           onShowPicker: (context, currentValue) async {
