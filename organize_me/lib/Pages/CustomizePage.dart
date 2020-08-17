@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 // import 'package:googleapis/calenar/v3.dart';
 // import 'package:googleapis_auth/auth_io.dart';
-import 'Layouts.dart';
+import '../Layouts.dart';
 import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
 import 'package:intl/intl.dart';
+import 'package:organize_me/Functionality/AddEvent.dart';
 
 class CustomizePage extends StatefulWidget {
   @override
@@ -50,7 +52,7 @@ class _CustomizePageState extends State<CustomizePage> {
                           icon: new Icon(Icons.add_box),
                           iconSize: 40,
                           onPressed: () {
-                            _eventDiaglog();
+                            AddEvent();
                           },
                         ),
                       ),
@@ -68,7 +70,7 @@ class _CustomizePageState extends State<CustomizePage> {
                           icon: new Icon(Icons.add_box),
                           iconSize: 40,
                           onPressed: () {
-                            _paymentDialog();
+                            AddEvent();
                           },
                         ),
                       )
@@ -97,6 +99,8 @@ class _CustomizePageState extends State<CustomizePage> {
   }
 
 // THIS WILL HAVE A TITLE, DESCRIPTION, AND DATE
+
+/*
   void _eventDiaglog() {
     showDialog(
         context: context,
@@ -257,6 +261,7 @@ class _CustomizePageState extends State<CustomizePage> {
           );
         });
   }
+  */
 }
 
 class BasicDateTimeField extends StatelessWidget {
@@ -299,11 +304,10 @@ class ReorderableList extends StatefulWidget {
 class _ReorderableListState extends State<ReorderableList> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: ReorderableListView(
+    return Container(
+      height: 50,
+      child: ReorderableListView(
           onReorder: _onReorder,
-
-          //scrollDirection: Axis.vertical,
           padding: const EdgeInsets.symmetric(vertical: 8.0),
           children: List.generate(
             pageList.length,

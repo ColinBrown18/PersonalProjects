@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:organize_me/SettingsPage.dart';
+import 'package:organize_me/Functionality/Event.dart';
+import 'package:organize_me/Functionality/ViewEvent.dart';
+import 'package:organize_me/Pages/SettingsPage.dart';
 // import 'package:googleapis/calenar/v3.dart';
 // import 'package:googleapis_auth/auth_io.dart';
-import 'Layouts.dart';
+import '../Layouts.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:expandable/expandable.dart';
-import 'main.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'CustomizePage.dart';
 
 class HomePage extends StatefulWidget {
@@ -55,10 +57,15 @@ class Calendar extends StatefulWidget {
 
 class _CalendarState extends State<Calendar> {
   CalendarController _calendarController;
+  Map<DateTime, List<dynamic>> _events;
+  List<dynamic> _selectedEvents;
+
   @override
   void initState() {
     super.initState();
     _calendarController = CalendarController();
+    _events = {};
+    _selectedEvents = [];
   }
 
   @override
@@ -90,13 +97,52 @@ class _CalendarState extends State<Calendar> {
               ),
             ),
             TableCalendar(
+              events: _events,
               calendarStyle: CalendarStyle(
                 todayColor: Colors.blue[600],
                 selectedColor: Colors.blue[900],
               ),
               initialCalendarFormat: CalendarFormat.week,
+              onDaySelected: (date, events) {
+                _selectedEvents = events;
+              },
+              builders: CalendarBuilders(
+                selectedDayBuilder: (context, date, events) => Container(
+                  margin: const EdgeInsets.all(4),
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                      color: Theme.of(context).primaryColor,
+                      borderRadius: BorderRadius.circular(12)),
+                  child: Text(
+                    date.day.toString(),
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+                todayDayBuilder: (context, date, events) => Container(
+                  margin: const EdgeInsets.all(4),
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                      color: Colors.orange,
+                      borderRadius: BorderRadius.circular(12)),
+                  child: Text(
+                    date.day.toString(),
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+              ),
               calendarController: _calendarController,
-            )
+            ),
+            ..._selectedEvents.map((event) => ListTile(
+                  title: Text(event.title),
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (_) => EventDetailsPage(
+                                  event: event,
+                                )));
+                  },
+                )),
           ],
         ),
       ),
