@@ -9,6 +9,26 @@ class EventDetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('Note Details'),
+      ),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Text(
+                event.title,
+                style: Theme.of(context).textTheme.display1,
+              ),
+              SizedBox(height: 20),
+              Text(event.description)
+            ]),
+      ),
+    );
+
+    /*      OLD CODE
+    return Scaffold(
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
         child: Column(
@@ -21,5 +41,6 @@ class EventDetailsPage extends StatelessWidget {
         ),
       ),
     );
+    */
   }
 }

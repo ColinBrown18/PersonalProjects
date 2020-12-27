@@ -1,4 +1,7 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
+import 'package:organize_me/FirestoreService.dart';
 import 'package:organize_me/Functionality/Event.dart';
 import 'package:organize_me/Functionality/ViewEvent.dart';
 import 'package:organize_me/Pages/SettingsPage.dart';
@@ -68,6 +71,17 @@ class _CalendarState extends State<Calendar> {
     _selectedEvents = [];
   }
 
+  Map<DateTime, List<dynamic>> _groupEvents(List<EventModel> events) {
+    Map<DateTime, List<dynamic>> data = {};
+    events.forEach((event) {
+      DateTime date = DateTime(
+          event.eventDate.year, event.eventDate.month, event.eventDate.day, 12);
+      if (data[date] == null) data[date] = [];
+      data[date].add(event);
+    });
+    return data;
+  }
+
   @override
   void dispose() {
     _calendarController.dispose();
@@ -76,76 +90,89 @@ class _CalendarState extends State<Calendar> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: DesignCard(
-        child: Column(
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.fromLTRB(8, 0, 0, 8),
-              child: Row(
-                children: <Widget>[
-                  Text(
-                    "Calendar",
-                    style: TextStyle(
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold,
-                        fontFamily: "Ariel",
-                        decoration: TextDecoration.underline),
-                    textAlign: TextAlign.start,
-                  )
-                ],
-              ),
-            ),
-            TableCalendar(
-              events: _events,
-              calendarStyle: CalendarStyle(
-                todayColor: Colors.blue[600],
-                selectedColor: Colors.blue[900],
-              ),
-              initialCalendarFormat: CalendarFormat.week,
-              onDaySelected: (date, events) {
-                _selectedEvents = events;
-              },
-              builders: CalendarBuilders(
-                selectedDayBuilder: (context, date, events) => Container(
-                  margin: const EdgeInsets.all(4),
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                      color: Theme.of(context).primaryColor,
-                      borderRadius: BorderRadius.circular(12)),
-                  child: Text(
-                    date.day.toString(),
-                    style: TextStyle(color: Colors.white),
-                  ),
+    return Scaffold(
+      body: StreamBuilder<List<EventModel>>(
+          stream: eventDBS.streamList(),
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              List<EventModel> allEvents = snapshot.data;
+              if (allEvents.isNotEmpty) {
+                _events = _groupEvents(allEvents);
+              }
+            }
+            return Container(
+              child: DesignCard(
+                child: Column(
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(8, 0, 0, 8),
+                      child: Row(
+                        children: <Widget>[
+                          Text(
+                            "Calendar",
+                            style: TextStyle(
+                                fontSize: 30,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: "Ariel",
+                                decoration: TextDecoration.underline),
+                            textAlign: TextAlign.start,
+                          )
+                        ],
+                      ),
+                    ),
+                    TableCalendar(
+                      events: _events,
+                      calendarStyle: CalendarStyle(
+                        todayColor: Colors.blue[600],
+                        selectedColor: Colors.blue[900],
+                      ),
+                      initialCalendarFormat: CalendarFormat.week,
+                      onDaySelected: (date, events) {
+                        _selectedEvents = events;
+                      },
+                      builders: CalendarBuilders(
+                        selectedDayBuilder: (context, date, events) =>
+                            Container(
+                          margin: const EdgeInsets.all(4),
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                              color: Theme.of(context).primaryColor,
+                              borderRadius: BorderRadius.circular(12)),
+                          child: Text(
+                            date.day.toString(),
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        ),
+                        todayDayBuilder: (context, date, events) => Container(
+                          margin: const EdgeInsets.all(4),
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                              color: Colors.orange,
+                              borderRadius: BorderRadius.circular(12)),
+                          child: Text(
+                            date.day.toString(),
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        ),
+                      ),
+                      calendarController: _calendarController,
+                    ),
+                    ..._selectedEvents.map((event) => ListTile(
+                          title: Text(event.title),
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (_) => EventDetailsPage(
+                                          event: event,
+                                        )));
+                          },
+                        )),
+                  ],
                 ),
-                todayDayBuilder: (context, date, events) => Container(
-                  margin: const EdgeInsets.all(4),
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                      color: Colors.orange,
-                      borderRadius: BorderRadius.circular(12)),
-                  child: Text(
-                    date.day.toString(),
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ),
               ),
-              calendarController: _calendarController,
-            ),
-            ..._selectedEvents.map((event) => ListTile(
-                  title: Text(event.title),
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (_) => EventDetailsPage(
-                                  event: event,
-                                )));
-                  },
-                )),
-          ],
-        ),
-      ),
+            );
+          }),
     );
   }
 }
