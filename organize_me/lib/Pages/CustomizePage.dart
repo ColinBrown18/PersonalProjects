@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-// import 'package:googleapis/calenar/v3.dart';
-// import 'package:googleapis_auth/auth_io.dart';
 import '../Layouts.dart';
 import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
 import 'package:intl/intl.dart';
@@ -49,12 +46,14 @@ class _CustomizePageState extends State<CustomizePage> {
                       Padding(
                         padding: const EdgeInsets.fromLTRB(42, 0, 0, 0),
                         child: IconButton(
-                          icon: new Icon(Icons.add_box),
-                          iconSize: 40,
-                          onPressed: () {
-                            AddEvent();
-                          },
-                        ),
+                            icon: new Icon(Icons.add_box),
+                            iconSize: 40,
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => AddEventPage()));
+                            }),
                       ),
                     ],
                   ),
@@ -67,12 +66,14 @@ class _CustomizePageState extends State<CustomizePage> {
                       Padding(
                         padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
                         child: IconButton(
-                          icon: new Icon(Icons.add_box),
-                          iconSize: 40,
-                          onPressed: () {
-                            AddEvent();
-                          },
-                        ),
+                            icon: new Icon(Icons.add_box),
+                            iconSize: 40,
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => AddEventPage()));
+                            }),
                       )
                     ],
                   ),

@@ -3,21 +3,21 @@ import 'package:flutter/rendering.dart';
 import 'Event.dart';
 import 'package:organize_me/FirestoreService.dart';
 
-class AddEvent extends StatefulWidget {
+class AddEventPage extends StatefulWidget {
   final EventModel note;
 
-  const AddEvent({Key key, this.note}) : super(key: key);
+  const AddEventPage({Key key, this.note}) : super(key: key);
 
   @override
-  _AddEventState createState() => _AddEventState();
+  _AddEventPageState createState() => _AddEventPageState();
 }
 
-class _AddEventState extends State<AddEvent> {
+class _AddEventPageState extends State<AddEventPage> {
   TextStyle style = TextStyle(fontFamily: 'Montserrat', fontSize: 20.0);
   TextEditingController _title;
   TextEditingController _description;
   DateTime _eventDate;
-  final _formkey = GlobalKey<FormState>();
+  final _formKey = GlobalKey<FormState>();
   final _key = GlobalKey<ScaffoldState>();
   bool processing;
 
@@ -36,21 +36,22 @@ class _AddEventState extends State<AddEvent> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.note != null ? "Edit Note" : "Add Note"),
+        title: Text(widget.note != null ? "Edit Note" : "Add note"),
       ),
       key: _key,
       body: Form(
+        key: _formKey,
         child: Container(
           alignment: Alignment.center,
           child: ListView(
-            children: [
+            children: <Widget>[
               Padding(
                 padding:
-                    const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                    const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
                 child: TextFormField(
                   controller: _title,
                   validator: (value) =>
-                      (value.isEmpty) ? "Enter a title" : null,
+                      (value.isEmpty) ? "Please Enter title" : null,
                   style: style,
                   decoration: InputDecoration(
                       labelText: "Title",
@@ -94,32 +95,32 @@ class _AddEventState extends State<AddEvent> {
                   }
                 },
               ),
-              SizedBox(height: 10),
+              SizedBox(height: 10.0),
               processing
                   ? Center(child: CircularProgressIndicator())
                   : Padding(
-                      padding: const EdgeInsets.all(16),
+                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
                       child: Material(
-                        elevation: 5,
-                        borderRadius: BorderRadius.circular(30),
+                        elevation: 5.0,
+                        borderRadius: BorderRadius.circular(30.0),
                         color: Theme.of(context).primaryColor,
                         child: MaterialButton(
                           onPressed: () async {
-                            if (_formkey.currentState.validate()) {
+                            if (_formKey.currentState.validate()) {
                               setState(() {
                                 processing = true;
                               });
                               if (widget.note != null) {
                                 await eventDBS.updateData(widget.note.id, {
                                   "title": _title.text,
-                                  "desciption": _description.text,
+                                  "description": _description.text,
                                   "event_date": widget.note.eventDate
                                 });
                               } else {
                                 await eventDBS.createItem(EventModel(
                                     title: _title.text,
                                     description: _description.text,
-                                    eventDate: _eventDate));
+                                    eventDate: DateTime.now()));
                               }
                               Navigator.pop(context);
                               setState(() {
@@ -127,13 +128,15 @@ class _AddEventState extends State<AddEvent> {
                               });
                             }
                           },
-                          child: Text("Save",
-                              style: style.copyWith(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold)),
+                          child: Text(
+                            "Save",
+                            style: style.copyWith(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold),
+                          ),
                         ),
                       ),
-                    )
+                    ),
             ],
           ),
         ),

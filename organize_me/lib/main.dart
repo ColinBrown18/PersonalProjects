@@ -1,10 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:organize_me/Functionality/AddEvent.dart';
-// import 'package:googleapis/calenar/v3.dart';
-// import 'package:googleapis_auth/auth_io.dart';
-import 'Layouts.dart';
-import 'package:table_calendar/table_calendar.dart';
-import 'package:expandable/expandable.dart';
 import 'Pages/HomePage.dart';
 import 'Pages/CustomizePage.dart';
 import 'Pages/SettingsPage.dart';
@@ -24,9 +18,6 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: MyHomePage(title: 'Organize Me'),
-      routes: {
-        "add_event": (_) => AddEvent(),
-      },
     );
   }
 }
