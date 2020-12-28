@@ -1,16 +1,10 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:organize_me/FirestoreService.dart';
 import 'package:organize_me/Functionality/Event.dart';
 import 'package:organize_me/Functionality/ViewEvent.dart';
-import 'package:organize_me/Pages/SettingsPage.dart';
-// import 'package:googleapis/calenar/v3.dart';
-// import 'package:googleapis_auth/auth_io.dart';
 import '../Layouts.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:expandable/expandable.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'CustomizePage.dart';
 
 class HomePage extends StatefulWidget {
@@ -40,16 +34,15 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: ExpandableTheme(
-          data: const ExpandableThemeData(
-            iconColor: Colors.blue,
-            useInkWell: true,
-          ),
-          child: ListView(
-            children: <Widget>[cardOrder[0], cardOrder[1], cardOrder[2]],
-          )),
-    );
+    return Scaffold(
+        body: ExpandableTheme(
+            data: const ExpandableThemeData(
+              iconColor: Colors.blue,
+              useInkWell: true,
+            ),
+            child: ListView(
+              children: <Widget>[cardOrder[0], cardOrder[1], cardOrder[2]],
+            )));
   }
 }
 
@@ -71,6 +64,12 @@ class _CalendarState extends State<Calendar> {
     _selectedEvents = [];
   }
 
+  @override
+  void dispose() {
+    _calendarController.dispose();
+    super.dispose();
+  }
+
   Map<DateTime, List<dynamic>> _groupEvents(List<EventModel> events) {
     Map<DateTime, List<dynamic>> data = {};
     events.forEach((event) {
@@ -83,25 +82,18 @@ class _CalendarState extends State<Calendar> {
   }
 
   @override
-  void dispose() {
-    _calendarController.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: StreamBuilder<List<EventModel>>(
-          stream: eventDBS.streamList(),
-          builder: (context, snapshot) {
-            if (snapshot.hasData) {
-              List<EventModel> allEvents = snapshot.data;
-              if (allEvents.isNotEmpty) {
-                _events = _groupEvents(allEvents);
+    return Container(
+        child: StreamBuilder<List<EventModel>>(
+            stream: eventDBS.streamList(),
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                List<EventModel> allEvents = snapshot.data;
+                if (allEvents.isNotEmpty) {
+                  _events = _groupEvents(allEvents);
+                }
               }
-            }
-            return Container(
-              child: DesignCard(
+              return DesignCard(
                 child: Column(
                   children: <Widget>[
                     Padding(
@@ -170,10 +162,8 @@ class _CalendarState extends State<Calendar> {
                         )),
                   ],
                 ),
-              ),
-            );
-          }),
-    );
+              );
+            }));
   }
 }
 

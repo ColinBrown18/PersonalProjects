@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'Event.dart';
 import 'package:organize_me/FirestoreService.dart';
-import 'dart:html';
 
 class AddEvent extends StatefulWidget {
   final EventModel note;
