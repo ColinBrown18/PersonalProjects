@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 // import 'package:googleapis/calenar/v3.dart';
 // import 'package:googleapis_auth/auth_io.dart';
 import '../Layouts.dart';
+import 'package:organize_me/Login/LoginPage.dart';
 
 class SettingsPage extends StatefulWidget {
   @override
@@ -113,6 +114,12 @@ class _SettingsPageState extends State<SettingsPage> {
                                   fontSize: 20,
                                   fontWeight: FontWeight.bold),
                             ),
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => LoginPage()));
+                            },
                           )
                         ],
                       ))
