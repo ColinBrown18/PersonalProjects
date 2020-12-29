@@ -18,7 +18,6 @@ class _CustomizePageState extends State<CustomizePage> {
       child: Column(
         children: <Widget>[
           Container(
-            //fit: FlexFit.loose,
             child: DesignCard(
               child: Column(
                 children: <Widget>[

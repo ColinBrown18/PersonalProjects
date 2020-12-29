@@ -18,6 +18,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Container(
       key: _formKey,
+      color: Colors.white,
       child: Column(
         children: [
           Padding(padding: const EdgeInsets.fromLTRB(0, 40, 0, 0)),
@@ -26,7 +27,7 @@ class _LoginPageState extends State<LoginPage> {
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
+                  children: <Widget>[
                     Text(
                       "Log In",
                       textAlign: TextAlign.center,
@@ -42,85 +43,47 @@ class _LoginPageState extends State<LoginPage> {
           ),
           DesignCard(
             child: Column(
-              children: [
-                Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(8, 0, 0, 8),
-                      child: Text(
-                        "Username: ",
-                        textAlign: TextAlign.start,
-                        style: TextStyle(
-                          fontSize: 25,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    )
-                  ],
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: <Widget>[
+                Padding(padding: const EdgeInsets.all(0)),
+                Text(
+                  "Email:",
+                  textAlign: TextAlign.start,
+                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                 ),
-                Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(8, 10, 0, 8),
-                      child: TextFormField(
-                        controller: _emailController,
-                        style: TextStyle(
-                            fontSize: 25, fontWeight: FontWeight.normal),
-                        decoration: InputDecoration(
-                          labelText: "Enter Username",
-                          filled: true,
-                          fillColor: Colors.black,
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10)),
-                        ),
-                        validator: (String value) {
-                          if (value.isEmpty) {
-                            return "Please enter your Username";
-                          }
-                          return null;
-                        },
-                      ),
-                    ),
-                  ],
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 15, 0, 0),
+                  child: TextFormField(
+                    controller: _emailController,
+                    decoration: InputDecoration(
+                        labelText: "enter email",
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10))),
+                    validator: (value) =>
+                        (value.isEmpty) ? "Invalid Username" : null,
+                  ),
                 ),
-                Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(8, 15, 0, 8),
-                      child: Text(
-                        "Password: ",
-                        textAlign: TextAlign.start,
-                        style: TextStyle(
-                            fontSize: 25, fontWeight: FontWeight.bold),
-                      ),
-                    )
-                  ],
+                Padding(padding: const EdgeInsets.fromLTRB(0, 15, 0, 0)),
+                Text(
+                  "Password:",
+                  textAlign: TextAlign.start,
+                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                 ),
-                Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(8, 10, 0, 8),
-                      child: TextFormField(
-                        controller: _passwordController,
-                        style: TextStyle(
-                            fontSize: 25, fontWeight: FontWeight.normal),
-                        decoration: InputDecoration(
-                          labelText: "Enter Password",
-                          filled: true,
-                          fillColor: Colors.black,
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10)),
-                        ),
-                        validator: (String value) {
-                          if (value.isEmpty) {
-                            return "Please enter your Password";
-                          }
-                          return null;
-                        },
-                      ),
-                    ),
-                  ],
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 10, 0, 20),
+                  child: TextFormField(
+                    controller: _passwordController,
+                    decoration: InputDecoration(
+                        labelText: "enter password",
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10))),
+                    validator: (value) =>
+                        (value.isEmpty) ? "Invalid Password" : null,
+                  ),
                 ),
+                Flexible(child: TextButton(
+                  child: ,
+                ),)
               ],
             ),
           )
