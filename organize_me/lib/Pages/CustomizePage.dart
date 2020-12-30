@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../Layouts.dart';
 import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
 import 'package:intl/intl.dart';
-import 'package:organize_me/Functionality/AddEvent.dart';
+import 'package:organize_me/Events/AddEvent.dart';
 
 class CustomizePage extends StatefulWidget {
   @override

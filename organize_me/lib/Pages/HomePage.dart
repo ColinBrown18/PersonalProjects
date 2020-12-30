@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:organize_me/FirestoreService.dart';
-import 'package:organize_me/Functionality/Event.dart';
-import 'package:organize_me/Functionality/ViewEvent.dart';
+import 'package:organize_me/Events/Event.dart';
+import 'package:organize_me/Events/ViewEvent.dart';
 import '../Layouts.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:expandable/expandable.dart';

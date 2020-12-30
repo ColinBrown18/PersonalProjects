@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:organize_me/Layouts.dart';
+import 'package:organize_me/main.dart';
+import 'package:organize_me/Login/SignUp.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -52,7 +54,7 @@ class _LoginPageState extends State<LoginPage> {
                   style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                 ),
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(0, 15, 0, 0),
+                  padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
                   child: TextFormField(
                     controller: _emailController,
                     decoration: InputDecoration(
@@ -63,7 +65,7 @@ class _LoginPageState extends State<LoginPage> {
                         (value.isEmpty) ? "Invalid Username" : null,
                   ),
                 ),
-                Padding(padding: const EdgeInsets.fromLTRB(0, 15, 0, 0)),
+                Padding(padding: const EdgeInsets.fromLTRB(0, 10, 0, 0)),
                 Text(
                   "Password:",
                   textAlign: TextAlign.start,
@@ -81,9 +83,44 @@ class _LoginPageState extends State<LoginPage> {
                         (value.isEmpty) ? "Invalid Password" : null,
                   ),
                 ),
-                Flexible(child: TextButton(
-                  child: ,
-                ),)
+                Row(
+                  children: [
+                    Flexible(
+                      flex: 2,
+                      fit: FlexFit.tight,
+                      child: RaisedButton(
+                        child: Text(
+                          "Sign Up",
+                          style: TextStyle(color: Colors.black),
+                        ),
+                        onPressed: () {
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => ))
+                        },
+                      ),
+                    ),
+                    Flexible(
+                      flex: 2,
+                      fit: FlexFit.tight,
+                      child: Text(""),
+                    ),
+                    Flexible(
+                      flex: 2,
+                      fit: FlexFit.tight,
+                      child: RaisedButton(
+                        child: Text(
+                          "Log In",
+                          style: TextStyle(color: Colors.black),
+                        ),
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => MyHomePage()));
+                        },
+                      ),
+                    )
+                  ],
+                )
               ],
             ),
           )
