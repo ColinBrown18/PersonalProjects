@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:organize_me/Login/LoginPage.dart';
 import 'Pages/HomePage.dart';
 import 'Pages/CustomizePage.dart';
 import 'Pages/SettingsPage.dart';
@@ -17,10 +18,26 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(title: 'Organize Me'),
+      home: LoginPage(),
     );
   }
 }
+
+/*
+class StartUp extends StatefulWidget {
+  @override
+  _StartUpState createState() => _StartUpState();
+}
+
+class _StartUpState extends State<StartUp> {
+  @override
+  void initState() {
+    return Container(
+      child: LoginPage(),
+    );
+  }
+}
+*/
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);

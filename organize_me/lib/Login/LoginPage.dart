@@ -94,7 +94,10 @@ class _LoginPageState extends State<LoginPage> {
                           style: TextStyle(color: Colors.black),
                         ),
                         onPressed: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => ))
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => SignUpPage()));
                         },
                       ),
                     ),
